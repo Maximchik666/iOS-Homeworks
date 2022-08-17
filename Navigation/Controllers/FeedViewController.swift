@@ -7,13 +7,6 @@
 
 import UIKit
 
-
-struct Post {
-    
-    var title: String
-    
-}
-
 var postTitle = Post(title: "Your New Post")
 
 class FeedViewController: UIViewController {
