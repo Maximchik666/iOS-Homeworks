@@ -20,7 +20,7 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .systemYellow
         self.view.addSubview(self.button)
         self.button.center = self.view.center
         setupAlertConfiguration()
@@ -29,7 +29,8 @@ class InfoViewController: UIViewController {
     
     private lazy var button: UIButton = {
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 50))
-        button.backgroundColor  = .gray
+        button.backgroundColor  = .brown
+        button.layer.cornerRadius = 14
         button.setTitle("Just Click It", for: .normal)
         button.addTarget(self, action: #selector(self.addTarget), for: .touchUpInside)
         return button
