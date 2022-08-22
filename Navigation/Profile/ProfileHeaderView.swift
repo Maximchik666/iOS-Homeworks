@@ -72,12 +72,9 @@ class ProfileHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(statusButton)
-        addSubview(nameLabel)
-        addSubview(profileImage)
-        addSubview(statusLabel)
-        addSubview(textField)
+        
         addingConstraints()
+        addingSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -95,6 +92,14 @@ class ProfileHeaderView: UIView {
         if statusText != "" {
             statusLabel.text = statusText
         } else {statusLabel.text  = "Put Some Words In It First!"}
+    }
+    
+    func addingSubviews () {
+        addSubview(statusButton)
+        addSubview(nameLabel)
+        addSubview(profileImage)
+        addSubview(statusLabel)
+        addSubview(textField)
     }
     
     func addingConstraints () {
