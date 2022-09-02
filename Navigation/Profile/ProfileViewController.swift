@@ -9,29 +9,35 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    // MARK: UI Elements Creation
+    
     private let profileHeaderView: UIView = {
         let view = ProfileHeaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
+    private lazy var someButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBrown
+        button.setTitle("Only God Knows What For Button", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    // MARK: Life Cycle Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        viewDidLoadCustomization()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navBarCustomization()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        view.addSubview(profileHeaderView)
-        addConstraints()
-    }
+    // MARK: Customization and Grouping Functions
     
     func navBarCustomization () {
         // self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -50,9 +56,21 @@ class ProfileViewController: UIViewController {
         NSLayoutConstraint.activate([
             profileHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             profileHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            profileHeaderView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            ])
+            
+            someButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            someButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            someButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            someButton.heightAnchor.constraint(equalToConstant: 50)
+            
+        ])
     }
     
+    func viewDidLoadCustomization () {
+        view.backgroundColor = .lightGray
+        view.addSubview(profileHeaderView)
+        view.addSubview(someButton)
+        addConstraints()
+    }
 }

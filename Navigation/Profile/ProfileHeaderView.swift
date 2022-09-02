@@ -11,6 +11,8 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String = ""
     
+    // MARK: UI Elements Creation
+    
     private lazy var statusButton: UIButton = {
         
         let button = UIButton()
@@ -47,42 +49,45 @@ class ProfileHeaderView: UIView {
     }()
     
     private let profileImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 16, y: 16, width: 100, height: 100))
+        let image = UIImageView()
         image.image = UIImage(named: "IMG")
         image.layer.cornerRadius = 50
         image.layer.masksToBounds = true
         image.layer.borderWidth = 3
         image.layer.borderColor = UIColor.white.cgColor
+        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     private lazy var textField : UITextField = {
-        let textField = UITextField(frame: CGRect(x: 150, y: 96, width: 220, height: 40))
+        let textField = UITextField()
         textField.placeholder = "  Enter text here"
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         textField.font = UIFont(name: "HelveticaNeue", size: 15.0)
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         
         return textField
     }()
     
+    // MARK: Initializators
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(statusButton)
-        addSubview(nameLabel)
-        addSubview(profileImage)
-        addSubview(statusLabel)
-        addSubview(textField)
+        
+        addingSubviews()
         addingConstraints()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    // MARK: Obj-C Runtime Functions
     
     @objc func statusTextChanged(_ textField: UITextField){
         if let i = textField.text {
@@ -97,6 +102,18 @@ class ProfileHeaderView: UIView {
         } else {statusLabel.text  = "Put Some Words In It First!"}
     }
     
+    // MARK: Addind Subwiews function
+    
+    func addingSubviews () {
+        addSubview(statusButton)
+        addSubview(nameLabel)
+        addSubview(profileImage)
+        addSubview(statusLabel)
+        addSubview(textField)
+    }
+    
+    // MARK: Setting Up The Constraints
+    
     func addingConstraints () {
         NSLayoutConstraint.activate([
             
@@ -110,7 +127,17 @@ class ProfileHeaderView: UIView {
             
             statusLabel.bottomAnchor.constraint(equalTo: self.statusButton.topAnchor, constant: -55),
             statusLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 34),
-            statusLabel.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34)
+            statusLabel.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34),
+            
+            profileImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            profileImage.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            profileImage.heightAnchor.constraint(equalToConstant: 100),
+            profileImage.widthAnchor.constraint(equalToConstant: 100),
+            
+            textField.heightAnchor.constraint(equalToConstant: 40),
+            textField.widthAnchor.constraint(equalToConstant: 220),
+            textField.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34),
+            textField.topAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 4)
             
         ])
     }
