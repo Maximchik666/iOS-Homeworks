@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
         feedTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
-        profileTabNavigationController = UINavigationController.init(rootViewController: ProfileViewController())
+        profileTabNavigationController = UINavigationController.init(rootViewController: LoginViewController())
         
         tabBarController.viewControllers = [feedTabNavigationController, profileTabNavigationController]
         
@@ -32,8 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         profileTabNavigationController.tabBarItem = item2
         
         UITabBar.appearance().tintColor = .brown
-        UITabBar.appearance().backgroundColor = .white
-        
+        UITabBar.appearance().backgroundColor = UIColor(named: "LightGray")
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = tabBarController 
         window.makeKeyAndVisible()
