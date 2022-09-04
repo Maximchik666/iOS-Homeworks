@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		995E133328BE392C006B5B63 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E133228BE392C006B5B63 /* LogInViewController.swift */; };
+		997248D228C4B92D00C06B64 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */; };
 		99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEAD5A28AA48CB00F8A03F /* PostViewController.swift */; };
 		99BEAD5D28AA48F400F8A03F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */; };
 		99CBBE8B28ACEBC200DDCB77 /* Struct Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CBBE8A28ACEBC200DDCB77 /* Struct Post.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		995E133228BE392C006B5B63 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		99BEAD5A28AA48CB00F8A03F /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		99CBBE8A28ACEBC200DDCB77 /* Struct Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Struct Post.swift"; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				99CBBE8A28ACEBC200DDCB77 /* Struct Post.swift */,
+				997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				99CBBE8B28ACEBC200DDCB77 /* Struct Post.swift in Sources */,
 				99E8362C28AA26100021FAF0 /* SceneDelegate.swift in Sources */,
 				99BEAD5D28AA48F400F8A03F /* InfoViewController.swift in Sources */,
+				997248D228C4B92D00C06B64 /* TextFieldWithPadding.swift in Sources */,
 				99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */,
 				99CBBEAF28AD1C0D00DDCB77 /* ProfileHeaderView.swift in Sources */,
 			);

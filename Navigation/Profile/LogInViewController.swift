@@ -18,32 +18,36 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var vkLogo: UIImageView = {
+        
         let image = UIImageView()
         image.image = UIImage(named: "VKImage")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    private lazy var loginTextField: UITextField = {
-        let loginTextField = UITextField()
+    private lazy var loginTextField: TextFieldWithPadding = {
+        
+        let loginTextField = TextFieldWithPadding()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginTextField.placeholder = "   Email or Phone Number"
+        loginTextField.placeholder = "Email or Phone Number"
         loginTextField.clearButtonMode = .whileEditing
         //    loginTextField.delegate = self
         return loginTextField
     }()
     
     private lazy var separator: UIView = {
+        
         let line = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
         line.backgroundColor = UIColor.lightGray
         return line
     }()
     
-    private lazy var passwordTextField: UITextField = {
-        let passwordTextField = UITextField()
+    private lazy var passwordTextField: TextFieldWithPadding = {
+        
+        let passwordTextField = TextFieldWithPadding()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "   Enter Password"
+        passwordTextField.placeholder = "Enter Password"
         passwordTextField.isSecureTextEntry = true
         //    passwordTextField.delegate = self
         passwordTextField.clearButtonMode = .whileEditing
@@ -60,13 +64,11 @@ class LoginViewController: UIViewController {
         stackView.layer.borderColor = UIColor.lightGray.cgColor
         stackView.layer.borderWidth = 0.5
         stackView.backgroundColor = .systemGray6
-        
         return stackView
     }()
     
-    
-    
     private lazy var button: UIButton = {
+        
         let button = UIButton()
         button.backgroundColor = UIColor(named: "VKColor")
         button.setTitle("Log In", for: .normal)
@@ -76,8 +78,8 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         view.backgroundColor = .white
         self.setupGestures()
@@ -103,14 +105,15 @@ class LoginViewController: UIViewController {
     
     
     private func setupGestures() {
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.forcedHidingKeyboard))
         self.view.addGestureRecognizer(tapGesture)
     }
     
     
     @objc func didShowKeyboard(_ notification: Notification) {
-        print("show keyboard")
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+        
+            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
@@ -181,7 +184,6 @@ class LoginViewController: UIViewController {
             button.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
             button.topAnchor.constraint(equalTo: credentialsStackView.bottomAnchor, constant: 16),
             button.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16)
-            
         ])
     }
 }
