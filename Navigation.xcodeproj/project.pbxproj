@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		995E133328BE392C006B5B63 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E133228BE392C006B5B63 /* LogInViewController.swift */; };
 		99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEAD5A28AA48CB00F8A03F /* PostViewController.swift */; };
 		99BEAD5D28AA48F400F8A03F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */; };
 		99CBBE8B28ACEBC200DDCB77 /* Struct Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CBBE8A28ACEBC200DDCB77 /* Struct Post.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		995E133228BE392C006B5B63 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		99BEAD5A28AA48CB00F8A03F /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		99CBBE8A28ACEBC200DDCB77 /* Struct Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Struct Post.swift"; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				99E8362D28AA26100021FAF0 /* ProfileViewController.swift */,
 				99CBBEAE28AD1C0D00DDCB77 /* ProfileHeaderView.swift */,
+				995E133228BE392C006B5B63 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				99E8362E28AA26100021FAF0 /* ProfileViewController.swift in Sources */,
 				99E8362A28AA26100021FAF0 /* AppDelegate.swift in Sources */,
+				995E133328BE392C006B5B63 /* LogInViewController.swift in Sources */,
 				99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */,
 				99CBBE8B28ACEBC200DDCB77 /* Struct Post.swift in Sources */,
 				99E8362C28AA26100021FAF0 /* SceneDelegate.swift in Sources */,
@@ -343,7 +347,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -370,7 +374,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
