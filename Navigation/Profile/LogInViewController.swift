@@ -31,7 +31,6 @@ class LoginViewController: UIViewController {
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTextField.placeholder = "Email or Phone Number"
         loginTextField.clearButtonMode = .whileEditing
-        //    loginTextField.delegate = self
         return loginTextField
     }()
     
@@ -86,8 +85,21 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         addinsViews()
         addingConstraints()
+        navBarCustomization()
     }
     
+    
+    func navBarCustomization () {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: "LightGray")
+        appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")! ]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")!]
+        navigationController?.navigationBar.tintColor = UIColor(named: "VKColor")
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+       // self.navigationItem.title = "Your Feed"
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

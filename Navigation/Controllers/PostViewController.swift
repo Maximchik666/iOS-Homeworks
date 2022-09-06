@@ -18,7 +18,7 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = postTitle.title
+        self.navigationItem.title = "BlaBla"
         
     }
     

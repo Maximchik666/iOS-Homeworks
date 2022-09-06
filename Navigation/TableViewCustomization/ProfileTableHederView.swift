@@ -1,13 +1,13 @@
 //
-//  ProfileHeaderView.swift
+//  ProfileTableHederView.swift
 //  Navigation
 //
-//  Created by Maksim Kruglov on 17.08.2022.
+//  Created by Maksim Kruglov on 05.09.2022.
 //
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private var statusText: String = ""
     
@@ -18,7 +18,7 @@ class ProfileHeaderView: UIView {
         let button = UIButton()
         button.layer.cornerRadius = 14
         button.setTitle("Show Status", for: .normal)
-        button.backgroundColor = .brown
+        button.backgroundColor = UIColor(named: "VKColor")
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.cornerRadius = 4
@@ -59,9 +59,9 @@ class ProfileHeaderView: UIView {
         return image
     }()
     
-    private lazy var textField : UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "  Enter text here"
+    private lazy var textField : TextFieldWithPadding = {
+        let textField = TextFieldWithPadding()
+        textField.placeholder = "Enter text here"
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
@@ -76,9 +76,8 @@ class ProfileHeaderView: UIView {
     
     // MARK: Initializators
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         addingSubviews()
         addingConstraints()
     }
@@ -89,7 +88,7 @@ class ProfileHeaderView: UIView {
     
     // MARK: Obj-C Runtime Functions
     
-    @objc func statusTextChanged(_ textField: UITextField){
+    @objc func statusTextChanged(_ textField: TextFieldWithPadding){
         if let i = textField.text {
             statusText = i
         }
@@ -110,6 +109,7 @@ class ProfileHeaderView: UIView {
         addSubview(profileImage)
         addSubview(statusLabel)
         addSubview(textField)
+
     }
     
     // MARK: Setting Up The Constraints
@@ -121,6 +121,7 @@ class ProfileHeaderView: UIView {
             statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             statusButton.heightAnchor.constraint(equalToConstant: 50),
             statusButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            statusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
             
             nameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
             nameLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor, constant: 0),
@@ -142,6 +143,3 @@ class ProfileHeaderView: UIView {
         ])
     }
 }
-
-
-
