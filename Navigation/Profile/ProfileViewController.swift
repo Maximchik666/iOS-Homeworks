@@ -9,69 +9,72 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    // MARK: UI Elements Creation
-    
-    private let profileHeaderView: UIView = {
-        let view = ProfileHeaderView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private lazy var tableView: UITableView = {
+        
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(ProfileTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "CustomCell")
+        return tableView
     }()
-    
-    private lazy var someButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemBrown
-        button.setTitle("Only God Knows What For Button", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    // MARK: Life Cycle Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewDidLoadCustomization()
+        view.addSubview(tableView)
         navigationController?.navigationBar.isHidden = false
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navBarCustomization()
-    }
-    
-    // MARK: Customization and Grouping Functions
-    
-    func navBarCustomization () {
-        // self.navigationController?.navigationBar.prefersLargeTitles = true
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .systemBackground
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.brown]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.brown]
-        navigationController?.navigationBar.tintColor = .brown
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        self.navigationItem.title = "Profile"
-    }
-    
-    func addConstraints() {
+        
+        
         NSLayoutConstraint.activate([
-            profileHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             
-            someButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            someButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            someButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            someButton.heightAnchor.constraint(equalToConstant: 50)
+            self.tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
             
         ])
     }
     
-    func viewDidLoadCustomization () {
-        view.backgroundColor = .lightGray
-        view.addSubview(profileHeaderView)
-        view.addSubview(someButton)
-        addConstraints()
+}
+
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! PostTableViewCell
+        
+        cell.setupPost(post: viewModel[indexPath.row])
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = ProfileTableHeaderView()
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
+
+        return UITableView.automaticDimension
+    
+    
+}
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         
+          return UITableView.automaticDimension
+      }
+
+
 }
