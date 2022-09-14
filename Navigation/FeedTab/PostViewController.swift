@@ -19,7 +19,6 @@ class PostViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "BlaBla"
-        
     }
     
     

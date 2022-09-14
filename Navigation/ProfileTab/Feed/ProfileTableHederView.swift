@@ -48,7 +48,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private let profileImage: UIImageView = {
+    lazy var profileImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "IMG")
         image.layer.cornerRadius = 50
@@ -56,6 +56,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         image.layer.borderWidth = 3
         image.layer.borderColor = UIColor.white.cgColor
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.isUserInteractionEnabled = true
         return image
     }()
     
@@ -74,34 +75,42 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         return textField
     }()
     
+    var isImageViewIncreased = false
+    
     // MARK: Initializators
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addingSubviews()
         addingConstraints()
+        addGesture()
+        addObserver()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    
+    
     // MARK: Obj-C Runtime Functions
     
+    
+    // Saving text from textField to the Container statusText
     @objc func statusTextChanged(_ textField: TextFieldWithPadding){
         if let i = textField.text {
             statusText = i
         }
-        
     }
     
+    // Changing Text with Button
     @objc private func didTapButton() {
         if statusText != "" {
             statusLabel.text = statusText
         } else {statusLabel.text  = "Put Some Words In It First!"}
     }
     
-    // MARK: Addind Subwiews function
+    // MARK: Addind Subviews function
     
     func addingSubviews () {
         addSubview(statusButton)
@@ -109,12 +118,14 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         addSubview(profileImage)
         addSubview(statusLabel)
         addSubview(textField)
-
+        
     }
+    
     
     // MARK: Setting Up The Constraints
     
     func addingConstraints () {
+        
         NSLayoutConstraint.activate([
             
             statusButton.topAnchor.constraint(equalTo:self.profileImage.bottomAnchor, constant: 32),
@@ -141,5 +152,34 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
             textField.topAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 4)
             
         ])
+        
     }
+    
+    // Recogniser for tap on a Profile Image
+    private func addGesture() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hideProfileImageAndSendNotification(_:)))
+        self.profileImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    // Observer for taping on closing Icon, above big Profile Image
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(returnProfileImage(_ : )),
+                                               name: Notification.Name("bigProfileImage is Hidden"),
+                                               object: nil)
+    }
+    
+    
+    @objc private func hideProfileImageAndSendNotification(_ gestureRecognizer: UITapGestureRecognizer) {
+        
+        NotificationCenter.default.post(name: Notification.Name("ProfileClick"), object: nil)
+        profileImage.isHidden = true
+    }
+    
+    
+    @objc private func returnProfileImage (_ gestureRecognizer: UITapGestureRecognizer) {
+        profileImage.isHidden = false
+    }
+    
+    
 }

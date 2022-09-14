@@ -83,9 +83,7 @@ class PhotosTableViewCell: UITableViewCell {
             collectionView.heightAnchor.constraint(equalToConstant: 100)
             
         ])
-        
     }
-    
 }
 
 extension PhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
