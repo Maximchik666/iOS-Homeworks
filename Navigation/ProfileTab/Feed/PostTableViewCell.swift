@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StorageService
 
 class PostTableViewCell: UITableViewCell {
     
@@ -100,7 +101,6 @@ class PostTableViewCell: UITableViewCell {
             postLikesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             postLikesLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
             
-            
             postViewsLabel.topAnchor.constraint(equalTo: postText.bottomAnchor, constant: 16),
             postViewsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             postViewsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
@@ -117,5 +117,4 @@ class PostTableViewCell: UITableViewCell {
         postViewsLabel.text = "Views: \(post.views)"
         
     }
-    
 }
