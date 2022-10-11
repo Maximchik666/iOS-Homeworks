@@ -47,7 +47,13 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemCyan
+        
+#if DEBUG
+        view.backgroundColor = .red
+#else
+        view.backgroundColor = .blue
+#endif
+
         view.addSubview(stackView)
         stackView.addArrangedSubview(upperButton)
         stackView.addArrangedSubview(bottomButton)

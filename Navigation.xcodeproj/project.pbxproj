@@ -14,8 +14,6 @@
 		996F0C6628CA321400BEB2D1 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F0C6528CA321400BEB2D1 /* PhotoCollectionViewCell.swift */; };
 		997248D228C4B92D00C06B64 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */; };
 		998C0D3D28F03950009BD0B4 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 998C0D3C28F03950009BD0B4 /* StorageService.docc */; };
-		998C0D4328F03950009BD0B4 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998C0D3928F03950009BD0B4 /* StorageService.framework */; };
-		998C0D4A28F03950009BD0B4 /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C0D4928F03950009BD0B4 /* StorageServiceTests.swift */; };
 		998C0D4B28F03950009BD0B4 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 998C0D3B28F03950009BD0B4 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		998C0D4E28F03950009BD0B4 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998C0D3928F03950009BD0B4 /* StorageService.framework */; };
 		998C0D4F28F03950009BD0B4 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 998C0D3928F03950009BD0B4 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -32,20 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		998C0D4428F03950009BD0B4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 99E8361E28AA26100021FAF0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 998C0D3828F03950009BD0B4;
-			remoteInfo = StorageService;
-		};
-		998C0D4628F03950009BD0B4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 99E8361E28AA26100021FAF0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 99E8362528AA26100021FAF0;
-			remoteInfo = Navigation;
-		};
 		998C0D4C28F03950009BD0B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 99E8361E28AA26100021FAF0 /* Project object */;
@@ -79,8 +63,6 @@
 		998C0D3928F03950009BD0B4 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		998C0D3B28F03950009BD0B4 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		998C0D3C28F03950009BD0B4 /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
-		998C0D4228F03950009BD0B4 /* StorageServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorageServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		998C0D4928F03950009BD0B4 /* StorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceTests.swift; sourceTree = "<group>"; };
 		99BEAD5A28AA48CB00F8A03F /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		99CBBE8A28ACEBC200DDCB77 /* StructPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructPost.swift; sourceTree = "<group>"; };
@@ -100,14 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		998C0D3F28F03950009BD0B4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				998C0D4328F03950009BD0B4 /* StorageService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,14 +125,6 @@
 			path = StorageService;
 			sourceTree = "<group>";
 		};
-		998C0D4828F03950009BD0B4 /* StorageServiceTests */ = {
-			isa = PBXGroup;
-			children = (
-				998C0D4928F03950009BD0B4 /* StorageServiceTests.swift */,
-			);
-			path = StorageServiceTests;
-			sourceTree = "<group>";
-		};
 		99CBBE8C28ACEC0100DDCB77 /* HelpingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +149,6 @@
 			children = (
 				99E8362828AA26100021FAF0 /* Navigation */,
 				998C0D3A28F03950009BD0B4 /* StorageService */,
-				998C0D4828F03950009BD0B4 /* StorageServiceTests */,
 				99E8362728AA26100021FAF0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -193,7 +158,6 @@
 			children = (
 				99E8362628AA26100021FAF0 /* Navigation.app */,
 				998C0D3928F03950009BD0B4 /* StorageService.framework */,
-				998C0D4228F03950009BD0B4 /* StorageServiceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -263,25 +227,6 @@
 			productReference = 998C0D3928F03950009BD0B4 /* StorageService.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		998C0D4128F03950009BD0B4 /* StorageServiceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 998C0D5628F03950009BD0B4 /* Build configuration list for PBXNativeTarget "StorageServiceTests" */;
-			buildPhases = (
-				998C0D3E28F03950009BD0B4 /* Sources */,
-				998C0D3F28F03950009BD0B4 /* Frameworks */,
-				998C0D4028F03950009BD0B4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				998C0D4528F03950009BD0B4 /* PBXTargetDependency */,
-				998C0D4728F03950009BD0B4 /* PBXTargetDependency */,
-			);
-			name = StorageServiceTests;
-			productName = StorageServiceTests;
-			productReference = 998C0D4228F03950009BD0B4 /* StorageServiceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		99E8362528AA26100021FAF0 /* Navigation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99E8363A28AA26110021FAF0 /* Build configuration list for PBXNativeTarget "Navigation" */;
@@ -314,10 +259,6 @@
 					998C0D3828F03950009BD0B4 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
-					998C0D4128F03950009BD0B4 = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = 99E8362528AA26100021FAF0;
-					};
 					99E8362528AA26100021FAF0 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -338,20 +279,12 @@
 			targets = (
 				99E8362528AA26100021FAF0 /* Navigation */,
 				998C0D3828F03950009BD0B4 /* StorageService */,
-				998C0D4128F03950009BD0B4 /* StorageServiceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		998C0D3728F03950009BD0B4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		998C0D4028F03950009BD0B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -379,14 +312,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		998C0D3E28F03950009BD0B4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				998C0D4A28F03950009BD0B4 /* StorageServiceTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		99E8362228AA26100021FAF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,16 +335,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		998C0D4528F03950009BD0B4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 998C0D3828F03950009BD0B4 /* StorageService */;
-			targetProxy = 998C0D4428F03950009BD0B4 /* PBXContainerItemProxy */;
-		};
-		998C0D4728F03950009BD0B4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 99E8362528AA26100021FAF0 /* Navigation */;
-			targetProxy = 998C0D4628F03950009BD0B4 /* PBXContainerItemProxy */;
-		};
 		998C0D4D28F03950009BD0B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 998C0D3828F03950009BD0B4 /* StorageService */;
@@ -506,52 +421,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		998C0D5328F03950009BD0B4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K424BZ7XRC;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "maximchik666-gmail.com.StorageServiceTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Navigation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Navigation";
-			};
-			name = Debug;
-		};
-		998C0D5428F03950009BD0B4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K424BZ7XRC;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "maximchik666-gmail.com.StorageServiceTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Navigation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Navigation";
 			};
 			name = Release;
 		};
@@ -739,15 +608,6 @@
 			buildConfigurations = (
 				998C0D5128F03950009BD0B4 /* Debug */,
 				998C0D5228F03950009BD0B4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		998C0D5628F03950009BD0B4 /* Build configuration list for PBXNativeTarget "StorageServiceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				998C0D5328F03950009BD0B4 /* Debug */,
-				998C0D5428F03950009BD0B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
