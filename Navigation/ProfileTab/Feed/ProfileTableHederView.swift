@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
@@ -126,33 +127,38 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     func addingConstraints () {
         
-        NSLayoutConstraint.activate([
-            
-            statusButton.topAnchor.constraint(equalTo:self.profileImage.bottomAnchor, constant: 32),
-            statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            statusButton.heightAnchor.constraint(equalToConstant: 50),
-            statusButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            statusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
-            
-            nameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 27),
-            nameLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor, constant: 0),
-            
-            statusLabel.bottomAnchor.constraint(equalTo: self.statusButton.topAnchor, constant: -55),
-            statusLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 34),
-            statusLabel.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34),
-            
-            profileImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
-            profileImage.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            profileImage.heightAnchor.constraint(equalToConstant: 100),
-            profileImage.widthAnchor.constraint(equalToConstant: 100),
-            
-            textField.heightAnchor.constraint(equalToConstant: 40),
-            textField.widthAnchor.constraint(equalToConstant: 220),
-            textField.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34),
-            textField.topAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 4)
-            
-        ])
+        //SnapKit Constraints Realization
         
+        profileImage.snp.makeConstraints { (make) -> Void in
+            make.height.width.equalTo(100)
+            make.top.equalTo(self.snp.top).offset(16)
+            make.left.equalTo(self.snp.left).offset(16)
+        }
+        
+        nameLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp.top).offset(27)
+            make.left.equalTo(self.snp.left).offset(140)
+        }
+        
+        statusLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp.top).offset(54)
+            make.left.equalTo(self.snp.left).offset(140)
+        }
+        
+        textField.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.snp.top).offset(80)
+            make.left.equalTo(self.snp.left).offset(140)
+            make.right.equalTo(self.snp.right).offset(-16)
+            make.height.equalTo(40)
+        }
+        
+        statusButton.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(self.snp.left).offset(16)
+            make.right.equalTo(self.snp.right).offset(-16)
+            make.top.equalTo(self.snp.top).offset(132)
+            make.bottom.equalTo(self.snp.bottom).offset(-16)
+            make.height.equalTo(50)
+        }
     }
     
     // Recogniser for tap on a Profile Image

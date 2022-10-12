@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
     
@@ -111,10 +112,12 @@ class PostTableViewCell: UITableViewCell {
     
     func setupPost(post: Post) {
         postLabel.text = post.author
-        postImage.image = UIImage(named: post.image)
         postText.text = post.description
         postLikesLabel.text = "Likes: \(post.likes)"
         postViewsLabel.text = "Views: \(post.views)"
-        
+    }
+    
+    func setupImage(image: UIImage?){
+        postImage.image = image
     }
 }
