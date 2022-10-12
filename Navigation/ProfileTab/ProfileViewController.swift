@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class ProfileViewController: UIViewController {
     
@@ -165,7 +166,20 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! PostTableViewCell
+            
             cell.setupPost(post: viewModel[indexPath.row])
+            
+            // Color Filter Realization
+            var post = viewModel[indexPath.row]
+            let imageFilter = ImageProcessor()
+            
+            if indexPath.row % 2 == 0 {
+                imageFilter.processImage(sourceImage: post.image!, filter: .colorInvert, completion: {(a: UIImage?)-> Void in post.image = a})
+            } else {
+                imageFilter.processImage(sourceImage: post.image!, filter: .noir, completion: {(a: UIImage?)-> Void in post.image = a})
+            }
+            
+            cell.setupImage(image: post.image)
             return cell
         }
     }
