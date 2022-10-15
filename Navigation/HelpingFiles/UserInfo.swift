@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-public class User {
-    public var login: String
-    public var fullName: String
-    public var avatar: UIImage
-    public var status: String
+class User {
+    var login: String
+    var fullName: String
+    var avatar: UIImage
+    var status: String
     
     init(login: String, fullName: String, avatar: UIImage, status: String) {
         self.login = login
@@ -28,14 +28,30 @@ protocol UserService {
 }
 
 public class CurrentUserService: UserService {
-   public var user: User
+    var user: User
     
     init (user: User) {
         self.user = user
     }
     
     
-  public  func avtorization(login: String) -> User? {
+    func avtorization(login: String) -> User? {
+        if login == user.login{
+            return user
+        }
+        return nil
+    }
+}
+
+public class TestUserService: UserService {
+   var user: User
+    
+    init (user: User) {
+        self.user = user
+    }
+    
+    
+  func avtorization(login: String) -> User? {
         if login == user.login{
             return user
         }
@@ -44,6 +60,9 @@ public class CurrentUserService: UserService {
 }
 
 
-public var user1 = User(login: "123", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin...")
+
+var user1 = User(login: "123", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin'")
+var user2 = User(login: "123", fullName: "Admin Adminov", avatar: UIImage(named: "Ava2")!, status: "Strugglin'")
 
 public var userService1 = CurrentUserService(user: user1)
+public var userService_Test = TestUserService(user: user2)

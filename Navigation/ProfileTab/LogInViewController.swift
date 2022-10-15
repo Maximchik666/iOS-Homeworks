@@ -10,8 +10,12 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var userInfo: UserService = userService1
-    private var login = ""
+    
+#if DEBUG
+        var userInfo = userService1
+#else
+        var userInfo = userService_Test
+#endif
     
     private lazy var scrollView: UIScrollView = {
         
@@ -34,7 +38,6 @@ class LoginViewController: UIViewController {
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTextField.placeholder = "Email or Phone Number"
         loginTextField.clearButtonMode = .whileEditing
-        loginTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return loginTextField
     }()
     
@@ -160,7 +163,7 @@ class LoginViewController: UIViewController {
     
     @objc private func didTapButton() {
         let vc = ProfileViewController()
-        if let a = userInfo.avtorization(login: self.login){
+        if let a = userInfo.avtorization(login: self.loginTextField.text!){
             vc.user = a
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
@@ -170,12 +173,6 @@ class LoginViewController: UIViewController {
             }))
            
             self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    @objc private func statusTextChanged(){
-        if let i = loginTextField.text {
-            self.login = i
         }
     }
     
