@@ -27,7 +27,7 @@ protocol UserService {
     func avtorization (login: String) -> User?
 }
 
-public class CurrentUserService: UserService {
+class CurrentUserService: UserService {
     var user: User
     
     init (user: User) {
@@ -43,7 +43,7 @@ public class CurrentUserService: UserService {
     }
 }
 
-public class TestUserService: UserService {
+class TestUserService: UserService {
    var user: User
     
     init (user: User) {
@@ -59,10 +59,3 @@ public class TestUserService: UserService {
     }
 }
 
-
-
-var user1 = User(login: "123", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin'")
-var user2 = User(login: "123", fullName: "Admin Adminov", avatar: UIImage(named: "Ava2")!, status: "Strugglin'")
-
-public var userService1 = CurrentUserService(user: user1)
-public var userService_Test = TestUserService(user: user2)

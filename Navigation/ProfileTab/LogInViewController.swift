@@ -5,17 +5,11 @@
 //  Created by Maksim Kruglov on 30.08.2022.
 //
 
-
 import UIKit
 
 class LoginViewController: UIViewController {
     
-    
-#if DEBUG
-        var userInfo = userService1
-#else
-        var userInfo = userService_Test
-#endif
+    var userInfo: UserService?
     
     private lazy var scrollView: UIScrollView = {
         
@@ -55,7 +49,6 @@ class LoginViewController: UIViewController {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Enter Password"
         passwordTextField.isSecureTextEntry = true
-        //    passwordTextField.delegate = self
         passwordTextField.clearButtonMode = .whileEditing
         return passwordTextField
     }()
@@ -92,11 +85,14 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         addingViews()
         addingConstraints()
-        //   navBarCustomization()
+       
     }
     
+    func setUserInfo(userInfo: UserService){
+        self.userInfo = userInfo
+    }
     
-    func navBarCustomization () {
+    private func navBarCustomization () {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "LightGray")
         appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")! ]
@@ -105,7 +101,7 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        // self.navigationItem.title = "Your Feed"
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -162,17 +158,16 @@ class LoginViewController: UIViewController {
     
     
     @objc private func didTapButton() {
-        let vc = ProfileViewController()
-        if let a = userInfo.avtorization(login: self.loginTextField.text!){
-            vc.user = a
-            self.navigationController?.pushViewController(vc, animated: true)
+        let viewController = ProfileViewController()
+        if let user = userInfo?.avtorization(login: loginTextField.text ?? ""){
+            viewController.user = user
+            navigationController?.pushViewController(viewController, animated: true)
         } else {
             let alertController = UIAlertController(title: "Sorry!", message: "Wrong Password!", preferredStyle: .alert)
-            
             alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
             }))
            
-            self.present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
     }
     
