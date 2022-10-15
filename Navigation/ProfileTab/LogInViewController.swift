@@ -10,6 +10,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    var userInfo: UserService = userService1
+    private var login = ""
+    
     private lazy var scrollView: UIScrollView = {
         
         let scrollView = UIScrollView()
@@ -31,6 +34,7 @@ class LoginViewController: UIViewController {
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTextField.placeholder = "Email or Phone Number"
         loginTextField.clearButtonMode = .whileEditing
+        loginTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return loginTextField
     }()
     
@@ -83,9 +87,9 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         self.setupGestures()
         navigationController?.navigationBar.isHidden = true
-        addinsViews()
+        addingViews()
         addingConstraints()
-     //   navBarCustomization()
+        //   navBarCustomization()
     }
     
     
@@ -98,7 +102,7 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-       // self.navigationItem.title = "Your Feed"
+        // self.navigationItem.title = "Your Feed"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +129,7 @@ class LoginViewController: UIViewController {
     
     @objc func didShowKeyboard(_ notification: Notification) {
         
-            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
@@ -156,10 +160,26 @@ class LoginViewController: UIViewController {
     
     @objc private func didTapButton() {
         let vc = ProfileViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let a = userInfo.avtorization(login: self.login){
+            vc.user = a
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "Sorry!", message: "Wrong Password!", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
+            }))
+           
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
-    private func addinsViews(){
+    @objc private func statusTextChanged(){
+        if let i = loginTextField.text {
+            self.login = i
+        }
+    }
+    
+    private func addingViews(){
         
         view.addSubview(scrollView)
         scrollView.addSubview(vkLogo)

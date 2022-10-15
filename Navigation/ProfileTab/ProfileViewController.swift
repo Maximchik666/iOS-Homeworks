@@ -10,6 +10,8 @@ import StorageService
 
 class ProfileViewController: UIViewController {
     
+    var user: User?
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +34,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var secondProfileImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "IMG")
+        image.image = user?.avatar
         image.layer.cornerRadius = 50
         image.layer.masksToBounds = true
         image.layer.borderWidth = 3
@@ -172,7 +174,11 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return ProfileTableHeaderView()
+            let profileView = ProfileTableHeaderView()
+            profileView.profileImage.image = user?.avatar
+            profileView.statusLabel.text = user?.status
+            profileView.nameLabel.text = user?.fullName
+            return profileView
         } else {
             return nil
         }
