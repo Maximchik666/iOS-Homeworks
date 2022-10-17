@@ -30,7 +30,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
-    private let nameLabel: UILabel = {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Hipster Cat"
         label.textColor = .black
@@ -39,7 +39,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private let statusLabel: UILabel = {
+    lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.text = "Waiting for Something"
         label.textColor = .gray

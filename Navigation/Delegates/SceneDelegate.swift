@@ -14,14 +14,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var feedTabNavigationController: UINavigationController!
     var profileTabNavigationController: UINavigationController!
     
+    
+#if DEBUG
+        var userInfo = TestUserService(user: User(login: "123", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin'"))
+#else
+        var userInfo = CurrentUserService(user:User(login: "123", fullName: "Admin Adminov", avatar: UIImage(named: "Ava2")!, status: "Strugglin'") )
+#endif
+    
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let tabBarController = UITabBarController()
         
+        let loginViewController1 = LoginViewController()
+        loginViewController1.setUserInfo(userInfo: userInfo)
+        
         feedTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
-        profileTabNavigationController = UINavigationController.init(rootViewController: LoginViewController())
+        profileTabNavigationController = UINavigationController.init(rootViewController: loginViewController1)
         
         tabBarController.viewControllers = [feedTabNavigationController, profileTabNavigationController]
         
