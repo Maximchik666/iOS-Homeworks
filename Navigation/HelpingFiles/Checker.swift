@@ -14,9 +14,12 @@ class Checker {
     private let login = "admin"
     private let password = "123"
     
+    private init () {}
+    
     func check (login: String, password: String) -> Bool {
         
         login == self.login && password == self.password ? true : false
+        
         
     }
 }
