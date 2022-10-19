@@ -24,7 +24,7 @@ class User {
 
 protocol UserService {
     
-    func avtorization (login: String) -> User?
+    func autorization (login: String) -> User?
 }
 
 class CurrentUserService: UserService {
@@ -35,7 +35,7 @@ class CurrentUserService: UserService {
     }
     
     
-    func avtorization(login: String) -> User? {
+    func autorization(login: String) -> User? {
         if login == user.login{
             return user
         }
@@ -51,7 +51,7 @@ class TestUserService: UserService {
     }
     
     
-  func avtorization(login: String) -> User? {
+  func autorization(login: String) -> User? {
         if login == user.login{
             return user
         }

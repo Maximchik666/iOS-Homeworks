@@ -16,9 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
 #if DEBUG
-        var userInfo = TestUserService(user: User(login: "123", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin'"))
+        var userInfo = TestUserService(user: User(login: "admin", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin'"))
 #else
-        var userInfo = CurrentUserService(user:User(login: "123", fullName: "Admin Adminov", avatar: UIImage(named: "Ava2")!, status: "Strugglin'") )
+        var userInfo = CurrentUserService(user:User(login: "admin", fullName: "Admin Adminov", avatar: UIImage(named: "Ava2")!, status: "Strugglin'") )
 #endif
     
     
@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let loginViewController1 = LoginViewController()
         loginViewController1.setUserInfo(userInfo: userInfo)
+        loginViewController1.loginDelegate = LoginInspector()
         
         feedTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
         profileTabNavigationController = UINavigationController.init(rootViewController: loginViewController1)

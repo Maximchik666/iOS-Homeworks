@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     var userInfo: UserService?
+    var loginDelegate: LoginViewControllerDelegate?
     
     private lazy var scrollView: UIScrollView = {
         
@@ -85,7 +86,7 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         addingViews()
         addingConstraints()
-       
+        
     }
     
     func setUserInfo(userInfo: UserService){
@@ -101,7 +102,7 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-       
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,16 +159,20 @@ class LoginViewController: UIViewController {
     
     
     @objc private func didTapButton() {
-        let viewController = ProfileViewController()
-        if let user = userInfo?.avtorization(login: loginTextField.text ?? ""){
-            viewController.user = user
-            navigationController?.pushViewController(viewController, animated: true)
-        } else {
-            let alertController = UIAlertController(title: "Sorry!", message: "Wrong Password!", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
-            }))
-           
-            present(alertController, animated: true, completion: nil)
+        
+        if let loginCheck = loginDelegate?.check(self, login: loginTextField.text ?? "", password: passwordTextField.text ?? "") {
+            if loginCheck {
+                let viewController = ProfileViewController()
+                if let user = userInfo?.autorization(login: loginTextField.text ?? ""){
+                    viewController.user = user
+                    navigationController?.pushViewController(viewController, animated: true)
+                }
+            } else {
+                let alertController = UIAlertController(title: "Sorry!", message: "Wrong Login Or Password!", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
+                }))
+                present(alertController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -211,3 +216,4 @@ class LoginViewController: UIViewController {
         ])
     }
 }
+
