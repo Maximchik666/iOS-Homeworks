@@ -30,7 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let loginViewController1 = LoginViewController()
         loginViewController1.setUserInfo(userInfo: userInfo)
-        loginViewController1.loginDelegate = LoginInspector()
+        //loginViewController1.loginDelegate = LoginInspector()
+        loginViewController1.loginDelegate = MyLoginFactory().makeLoginInspector()
         
         feedTabNavigationController = UINavigationController.init(rootViewController: FeedViewController())
         profileTabNavigationController = UINavigationController.init(rootViewController: loginViewController1)
