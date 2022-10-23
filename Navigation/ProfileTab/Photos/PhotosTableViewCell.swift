@@ -7,7 +7,7 @@
 
 import UIKit
 
-let smallCollection = ["IMG-4", "IMG-5", "IMG-6", "IMG-7"]
+let smallCollection = [UIImage(named: "IMG-4"), UIImage(named: "IMG-5"), UIImage(named: "IMG-6"), UIImage(named: "IMG-7")]
 
 class PhotosTableViewCell: UITableViewCell {
     
@@ -97,7 +97,7 @@ extension PhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let photo =  collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
-        photo.setupImage(image: smallCollection[indexPath.item])
+        photo.setupImage(image: smallCollection[indexPath.item]!)
         return photo
     }
     
