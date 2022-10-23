@@ -8,8 +8,6 @@
 import UIKit
 import iOSIntPackage
 
-let bigCollection = ["IMG-4", "IMG-5", "IMG-6", "IMG-7", "IMG-8", "IMG-9", "IMG-10", "IMG-11", "IMG-12", "IMG-13", "IMG-14", "IMG-15","IMG-16", "IMG-17", "IMG-18", "IMG-19", "IMG-20", "IMG-21", "IMG-22", "IMG-23", "IMG-24", "IMG-25", "IMG-26", "IMG-27"]
-
 private enum Constants {
     
     static let numberOfItemsInLine: CGFloat = 3
@@ -49,13 +47,12 @@ class PhotosViewController: UIViewController {
         
     }
     
-    override func didMove(toParent parent: UIViewController?) {
-            super.didMove(toParent: parent)
-            if parent == nil {
-                imagePublisher.removeSubscription(for: self)
-                imagePublisher.rechargeImageLibrary()
-            }
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        imagePublisher.removeSubscription(for: self)
+        imagePublisher.rechargeImageLibrary()
+    }
     
     func setupViewDidLoad (){
         view.backgroundColor = .systemBackground
