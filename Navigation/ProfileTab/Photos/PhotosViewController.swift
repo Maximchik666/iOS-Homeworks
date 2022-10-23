@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 let bigCollection = ["IMG-4", "IMG-5", "IMG-6", "IMG-7", "IMG-8", "IMG-9", "IMG-10", "IMG-11", "IMG-12", "IMG-13", "IMG-14", "IMG-15","IMG-16", "IMG-17", "IMG-18", "IMG-19", "IMG-20", "IMG-21", "IMG-22", "IMG-23", "IMG-24", "IMG-25", "IMG-26", "IMG-27"]
 
@@ -15,6 +16,11 @@ private enum Constants {
 }
 
 class PhotosViewController: UIViewController {
+    
+    
+    var imagePublisher = ImagePublisherFacade()
+    var imagesBank = [UIImage]()
+    var itemInSection = 0
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -37,8 +43,19 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewDidLoad()
+        
+        imagePublisher.subscribe(self)
+        imagePublisher.addImagesWithTimer(time: 1, repeat: 20)
+        
     }
     
+    override func didMove(toParent parent: UIViewController?) {
+            super.didMove(toParent: parent)
+            if parent == nil {
+                imagePublisher.removeSubscription(for: self)
+                imagePublisher.rechargeImageLibrary()
+            }
+        }
     
     func setupViewDidLoad (){
         view.backgroundColor = .systemBackground
@@ -54,24 +71,22 @@ class PhotosViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
             
         ])
-        
     }
-    
-    
 }
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        bigCollection.count
+        itemInSection
+        
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let photo =  collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
-        photo.setupImage(image: bigCollection[indexPath.item])
+        photo.setupImage(image: imagesBank[indexPath.item])
         return photo
     }
     
@@ -87,7 +102,16 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         
         return CGSize(width: itemWidth, height: itemWidth)
         
-        
     }
     
+}
+
+extension PhotosViewController: ImageLibrarySubscriber {
+    
+    func receive(images: [UIImage]) {
+        imagesBank = images
+        itemInSection = imagesBank.count
+        collectionView.reloadData()
+    }
+
 }
