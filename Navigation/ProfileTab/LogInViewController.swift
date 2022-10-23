@@ -67,26 +67,34 @@ class LoginViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var button: UIButton = {
-        
-        let button = UIButton()
-        button.backgroundColor = UIColor(named: "VKColor")
-        button.setTitle("Log In", for: .normal)
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(self.didTapButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
-    override func viewDidLoad() {
-        
+    private lazy  var button = CustomButton(title: "Log In")
+    
+    private lazy var closure: () -> Void = {
+        if let loginCheck = self.loginDelegate?.check(self, login: self.loginTextField.text ?? "", password: self.passwordTextField.text ?? "") {
+            if loginCheck {
+                let viewController = ProfileViewController()
+                if let user = self.userInfo?.autorization(login: self.loginTextField.text ?? ""){
+                    viewController.user = user
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
+            } else {
+                let alertController = UIAlertController(title: "Sorry!", message: "Wrong Login Or Password!", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
+                }))
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    override func viewDidLoad(){
         super.viewDidLoad()
         view.backgroundColor = .white
         self.setupGestures()
         navigationController?.navigationBar.isHidden = true
         addingViews()
         addingConstraints()
-        
+        button.target = closure
     }
     
     func setUserInfo(userInfo: UserService){
@@ -118,6 +126,7 @@ class LoginViewController: UIViewController {
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
     }
+    
     
     
     private func setupGestures() {
@@ -155,25 +164,6 @@ class LoginViewController: UIViewController {
     @objc private func forcedHidingKeyboard() {
         self.view.endEditing(true)
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }
-    
-    
-    @objc private func didTapButton() {
-        
-        if let loginCheck = loginDelegate?.check(self, login: loginTextField.text ?? "", password: passwordTextField.text ?? "") {
-            if loginCheck {
-                let viewController = ProfileViewController()
-                if let user = userInfo?.autorization(login: loginTextField.text ?? ""){
-                    viewController.user = user
-                    navigationController?.pushViewController(viewController, animated: true)
-                }
-            } else {
-                let alertController = UIAlertController(title: "Sorry!", message: "Wrong Login Or Password!", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
-                }))
-                present(alertController, animated: true, completion: nil)
-            }
-        }
     }
     
     private func addingViews(){
