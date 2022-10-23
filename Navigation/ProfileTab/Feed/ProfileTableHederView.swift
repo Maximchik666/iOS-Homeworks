@@ -13,23 +13,6 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: UI Elements Creation
     
-//    private lazy var statusButton: UIButton = {
-//
-//        let button = UIButton()
-//        button.layer.cornerRadius = 14
-//        button.setTitle("Show Status", for: .normal)
-//        button.backgroundColor = UIColor(named: "VKColor")
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-//        button.layer.cornerRadius = 4
-//        button.layer.shadowColor = CGColor.init(red: 0, green: 0, blue: 0, alpha: 1)
-//        button.layer.shadowOpacity = 0.7
-//
-//        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-//
-//        return button
-//    }()
-    
     private lazy var statusButton = CustomButton(title: "Show Status")
     private lazy var closure: () -> Void = {
         if self.statusText != "" {

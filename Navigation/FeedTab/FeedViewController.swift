@@ -22,25 +22,39 @@ class FeedViewController: UIViewController {
         return stack
     }()
     
+    private lazy var upperButton = CustomButton(backgroundColor: .brown, title: "Create a New Post")
+    private lazy var bottomButton = CustomButton(backgroundColor: .brown, title: "ComingSoon")
+    private lazy var checkGuessButton = CustomButton(title: "Guess!")
+   
+    private lazy var closureForStackViewButtons = {
+        let viewController = PostViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+   
+    private lazy var closureForCheckGuessButton = {
+        var inputWord  = ""
+        if  let i = self.gameTextField.text {
+            inputWord = i
+        }
+        var checkResult = FeedModel().check(word: inputWord)
+        
+        if checkResult {
+            self.checkLabel.backgroundColor = .systemGreen
+        } else {self.checkLabel.backgroundColor = .systemRed}
+    }
     
-    private lazy var upperButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor  = .brown
-        button.setTitle("Create a New Post", for: .normal)
-        button.layer.cornerRadius = 14
-        button.addTarget(self, action: #selector(self.didTapButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private lazy var gameTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .white
+        return textField
     }()
     
-    private lazy var bottomButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor  = .brown
-        button.setTitle("ComingSoon", for: .normal)
-        button.layer.cornerRadius = 14
-        button.addTarget(self, action: #selector(self.didTapButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private lazy var checkLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .systemYellow
+        return label
     }()
     
     // MARK: Life Cycle Functions
@@ -49,16 +63,21 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         
 #if DEBUG
-        view.backgroundColor = .red
+        view.backgroundColor = .systemGray
 #else
         view.backgroundColor = .blue
 #endif
 
         view.addSubview(stackView)
+        view.addSubview(gameTextField)
+        view.addSubview(checkGuessButton)
+        view.addSubview(checkLabel)
         stackView.addArrangedSubview(upperButton)
         stackView.addArrangedSubview(bottomButton)
         addingConstraints()
-        
+        upperButton.target = closureForStackViewButtons
+        bottomButton.target = closureForStackViewButtons
+        checkGuessButton.target = closureForCheckGuessButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,13 +102,6 @@ class FeedViewController: UIViewController {
     }
     
     
-    @objc private func didTapButton() {
-        let vc = PostViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
-    
     func addingConstraints () {
         NSLayoutConstraint.activate([
             
@@ -100,7 +112,22 @@ class FeedViewController: UIViewController {
             upperButton.widthAnchor.constraint(equalToConstant: 200),
             
             bottomButton.heightAnchor.constraint(equalToConstant: 50),
-            bottomButton.widthAnchor.constraint(equalToConstant: 200)
+            bottomButton.widthAnchor.constraint(equalToConstant: 200),
+            
+            gameTextField.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            gameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            gameTextField.heightAnchor.constraint(equalToConstant: 50),
+            gameTextField.widthAnchor.constraint(equalToConstant: 200),
+            
+            checkGuessButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            checkGuessButton.topAnchor.constraint(equalTo: gameTextField.bottomAnchor, constant: 20),
+            checkGuessButton.heightAnchor.constraint(equalToConstant: 50),
+            checkGuessButton.widthAnchor.constraint(equalToConstant: 200),
+            
+            checkLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            checkLabel.topAnchor.constraint(equalTo: checkGuessButton.bottomAnchor, constant: 20),
+            checkLabel.heightAnchor.constraint(equalToConstant: 50),
+            checkLabel.widthAnchor.constraint(equalToConstant: 200)
             
         ])
     }
