@@ -9,6 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    weak var coordinator: AppCoordinator?
+    
     var userInfo: UserService?
     var loginDelegate: LoginViewControllerDelegate?
     
@@ -73,9 +75,9 @@ class LoginViewController: UIViewController {
     private lazy var closure: () -> Void = {
         if let loginCheck = self.loginDelegate?.check(self, login: self.loginTextField.text ?? "", password: self.passwordTextField.text ?? "") {
             if loginCheck {
-                let viewController = ProfileViewController()
+                let viewController = MainTabBarController()
                 if let user = self.userInfo?.autorization(login: self.loginTextField.text ?? ""){
-                    viewController.user = user
+                    SelectedUser.shared.user = user
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             } else {
@@ -86,7 +88,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     override func viewDidLoad(){
         super.viewDidLoad()
         view.backgroundColor = .white

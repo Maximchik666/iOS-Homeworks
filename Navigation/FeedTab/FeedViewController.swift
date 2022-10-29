@@ -11,6 +11,8 @@ var postTitle = "Your New Post"
 
 class FeedViewController: UIViewController {
     
+    weak var coordinator: FeedCoordinator?
+    
     // MARK: UI Elements Creation
     
     private lazy var stackView : UIStackView = {
@@ -86,6 +88,7 @@ class FeedViewController: UIViewController {
         navBarCustomization()
         
     }
+    
     
     // MARK: Customization and Obj-C Runtime Functions
     
