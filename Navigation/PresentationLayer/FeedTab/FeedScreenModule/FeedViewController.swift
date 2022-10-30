@@ -13,6 +13,12 @@ class FeedViewController: UIViewController {
     
     weak var coordinator: FeedCoordinator?
     
+    var viewModel: FeedViewModel? {
+        didSet{
+            
+        }
+    }
+    
     // MARK: UI Elements Creation
     
     private lazy var stackView : UIStackView = {
@@ -28,8 +34,23 @@ class FeedViewController: UIViewController {
     private lazy var bottomButton = CustomButton(backgroundColor: .brown, title: "ComingSoon")
     private lazy var checkGuessButton = CustomButton(title: "Guess!")
    
+    private lazy var gameTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = .white
+        return textField
+    }()
+    
+    private lazy var checkLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .systemYellow
+        return label
+    }()
+    
+    
     private lazy var closureForStackViewButtons = {
-        print("123")
+        print()
         self.coordinator?.openPostViewController()
     }
    
@@ -45,19 +66,6 @@ class FeedViewController: UIViewController {
         } else {self.checkLabel.backgroundColor = .systemRed}
     }
     
-    private lazy var gameTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .white
-        return textField
-    }()
-    
-    private lazy var checkLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .systemYellow
-        return label
-    }()
     
     // MARK: Life Cycle Functions
     
