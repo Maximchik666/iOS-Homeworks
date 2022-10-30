@@ -13,6 +13,7 @@
 		995ACDA12905920F0079559A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995ACDA02905920F0079559A /* CustomButton.swift */; };
 		995B5B5F28C62A00007F027F /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B5B5E28C62A00007F027F /* ProfileTableHederView.swift */; };
 		995D7DA3290DA620000E31E4 /* SelectedUserSingletone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */; };
+		995D7DA5290EACAC000E31E4 /* PostViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */; };
 		995E133328BE392C006B5B63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E133228BE392C006B5B63 /* LoginViewController.swift */; };
 		996F0C6628CA321400BEB2D1 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F0C6528CA321400BEB2D1 /* PhotoCollectionViewCell.swift */; };
 		997248D228C4B92D00C06B64 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */; };
@@ -69,6 +70,7 @@
 		995ACDA02905920F0079559A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		995B5B5E28C62A00007F027F /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserSingletone.swift; sourceTree = "<group>"; };
+		995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCoordinator.swift; sourceTree = "<group>"; };
 		995E133228BE392C006B5B63 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		996F0C6528CA321400BEB2D1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				997710C7290D7A69000D84E9 /* FeedCoordinator.swift */,
 				99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */,
+				995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */,
 				99BEAD5A28AA48CB00F8A03F /* PostViewController.swift */,
 				99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */,
 			);
@@ -384,6 +387,7 @@
 				99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */,
 				99BEAD5D28AA48F400F8A03F /* InfoViewController.swift in Sources */,
 				997248D228C4B92D00C06B64 /* TextFieldWithPadding.swift in Sources */,
+				995D7DA5290EACAC000E31E4 /* PostViewCoordinator.swift in Sources */,
 				995D7DA3290DA620000E31E4 /* SelectedUserSingletone.swift in Sources */,
 				997710C4290D6E4C000D84E9 /* AppCoordinator.swift in Sources */,
 				99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */,

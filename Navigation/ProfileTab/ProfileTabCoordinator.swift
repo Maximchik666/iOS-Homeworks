@@ -10,7 +10,7 @@ import UIKit
 class ProfileTabCoordinator: Coordinator {
     
     var navigationController: UINavigationController
-    var childrenCoordinators: [Coordinator] = []
+    var childCoordinators: [Coordinator] = []
 
     
     init (navigationController: UINavigationController){
@@ -24,6 +24,13 @@ class ProfileTabCoordinator: Coordinator {
         vc.coordinator = self
         vc.user = SelectedUser.shared.user
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func openPhotosViewController (){
+        let vc = PhotosViewController()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+        
     }
 }
 

@@ -78,7 +78,7 @@ class LoginViewController: UIViewController {
                 let viewController = MainTabBarController()
                 if let user = self.userInfo?.autorization(login: self.loginTextField.text ?? ""){
                     SelectedUser.shared.user = user
-                    self.navigationController?.pushViewController(viewController, animated: true)
+                    self.coordinator?.pushToNavBarController(tapBarController: viewController)
                 }
             } else {
                 let alertController = UIAlertController(title: "Sorry!", message: "Wrong Login Or Password!", preferredStyle: .alert)

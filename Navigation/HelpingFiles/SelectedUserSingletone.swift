@@ -12,4 +12,8 @@ final class SelectedUser {
     static let shared = SelectedUser()
     
     var user: User? = nil
+    
+    private init(user: User? = nil) {
+        self.user = user
+    }
 }

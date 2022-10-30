@@ -9,7 +9,7 @@ import UIKit
 
 class AppCoordinator: Coordinator {
     
-    var childrenCoordinators: [Coordinator] = []
+    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
     init (navigationController: UINavigationController) {
@@ -30,11 +30,14 @@ class AppCoordinator: Coordinator {
         
         vc.setUserInfo(userInfo: userInfo)
         vc.loginDelegate = MyLoginFactory().makeLoginInspector()
-        
         vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
  
+    func pushToNavBarController (tapBarController : MainTabBarController ){
+        navigationController.pushViewController(tapBarController, animated: true)
+    }
+    
 }
 

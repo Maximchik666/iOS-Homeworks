@@ -29,8 +29,8 @@ class FeedViewController: UIViewController {
     private lazy var checkGuessButton = CustomButton(title: "Guess!")
    
     private lazy var closureForStackViewButtons = {
-        let viewController = PostViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        print("123")
+        self.coordinator?.openPostViewController()
     }
    
     private lazy var closureForCheckGuessButton = {
