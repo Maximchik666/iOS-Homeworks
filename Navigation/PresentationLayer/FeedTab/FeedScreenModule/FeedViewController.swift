@@ -13,11 +13,7 @@ class FeedViewController: UIViewController {
     
     weak var coordinator: FeedCoordinator?
     
-    var viewModel: FeedViewModel? {
-        didSet{
-            
-        }
-    }
+    var viewModel = FeedViewModel()
     
     // MARK: UI Elements Creation
     
@@ -59,7 +55,7 @@ class FeedViewController: UIViewController {
         if  let i = self.gameTextField.text {
             inputWord = i
         }
-        var checkResult = FeedModel().check(word: inputWord)
+        var checkResult = self.viewModel.check(word: inputWord)
         
         if checkResult {
             self.checkLabel.backgroundColor = .systemGreen
