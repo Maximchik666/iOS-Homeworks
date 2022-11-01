@@ -12,7 +12,4 @@ class FeedModel {
     
     var password: String = "123"
     
-    func check (word: String) -> Bool {
-         word == password
-    }
 }
