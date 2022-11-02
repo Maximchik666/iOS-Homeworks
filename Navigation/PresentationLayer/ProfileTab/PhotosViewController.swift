@@ -15,6 +15,7 @@ private enum Constants {
 
 class PhotosViewController: UIViewController {
     
+    weak var coordinator: ProfileTabCoordinator?
     
     var imagePublisher = ImagePublisherFacade()
     var imagesBank = [UIImage]()

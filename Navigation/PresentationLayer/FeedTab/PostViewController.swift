@@ -9,6 +9,8 @@ import UIKit
 
 class PostViewController: UIViewController {
     
+    weak var coordinator: PostViewCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBlue
@@ -21,10 +23,14 @@ class PostViewController: UIViewController {
         self.navigationItem.title = "BlaBla"
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        coordinator?.destroyMe()
+    }
     
     @objc private func didTapButton() {
-        let vc = InfoViewController()
-        self.present(vc, animated: true)
+        self.coordinator?.openInfoViewController()
     }
     
 }

@@ -11,6 +11,10 @@ var postTitle = "Your New Post"
 
 class FeedViewController: UIViewController {
     
+    weak var coordinator: FeedCoordinator?
+    
+    var viewModel = FeedViewModel()
+    
     // MARK: UI Elements Creation
     
     private lazy var stackView : UIStackView = {
@@ -26,23 +30,6 @@ class FeedViewController: UIViewController {
     private lazy var bottomButton = CustomButton(backgroundColor: .brown, title: "ComingSoon")
     private lazy var checkGuessButton = CustomButton(title: "Guess!")
    
-    private lazy var closureForStackViewButtons = {
-        let viewController = PostViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-   
-    private lazy var closureForCheckGuessButton = {
-        var inputWord  = ""
-        if  let i = self.gameTextField.text {
-            inputWord = i
-        }
-        var checkResult = FeedModel().check(word: inputWord)
-        
-        if checkResult {
-            self.checkLabel.backgroundColor = .systemGreen
-        } else {self.checkLabel.backgroundColor = .systemRed}
-    }
-    
     private lazy var gameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +43,25 @@ class FeedViewController: UIViewController {
         label.backgroundColor = .systemYellow
         return label
     }()
+    
+    
+    private lazy var closureForStackViewButtons = {
+        print()
+        self.coordinator?.openPostViewController()
+    }
+   
+    private lazy var closureForCheckGuessButton = {
+        var inputWord  = ""
+        if  let i = self.gameTextField.text {
+            inputWord = i
+        }
+        var checkResult = self.viewModel.check(word: inputWord)
+        
+        if checkResult {
+            self.checkLabel.backgroundColor = .systemGreen
+        } else {self.checkLabel.backgroundColor = .systemRed}
+    }
+    
     
     // MARK: Life Cycle Functions
     
@@ -86,6 +92,7 @@ class FeedViewController: UIViewController {
         navBarCustomization()
         
     }
+    
     
     // MARK: Customization and Obj-C Runtime Functions
     

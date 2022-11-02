@@ -12,6 +12,7 @@ import iOSIntPackage
 class ProfileViewController: UIViewController {
     
     var user: User?
+    weak var coordinator: ProfileTabCoordinator?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -35,7 +36,7 @@ class ProfileViewController: UIViewController {
     
     private lazy var secondProfileImage: UIImageView = {
         let image = UIImageView()
-        image.image = user?.avatar
+        image.image = self.user?.avatar
         image.layer.cornerRadius = 50
         image.layer.masksToBounds = true
         image.layer.borderWidth = 3
@@ -188,7 +189,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            navigationController?.pushViewController(PhotosViewController(), animated: true)
+            self.coordinator?.openPhotosViewController()
         }
     }
 }

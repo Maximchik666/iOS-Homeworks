@@ -9,6 +9,8 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+    weak var coordinator: PostViewCoordinator?
+    
     let alertController = UIAlertController(title: "Hi!", message: "Have a good day!", preferredStyle: .alert)
     
     func setupAlertConfiguration() {
