@@ -18,8 +18,6 @@ class PhotosViewController: UIViewController {
     
     weak var coordinator: ProfileTabCoordinator?
     
-    private var temporaryContainer: [CGImage?] = []
-    
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -72,8 +70,7 @@ class PhotosViewController: UIViewController {
         
         ImageProcessor.init().processImagesOnThread(sourceImages: photoContainer, filter: .colorInvert, qos: .userInteractive) { filteredImages in
             
-            self.temporaryContainer = filteredImages
-            for (index,item) in self.temporaryContainer.enumerated() {
+            for (index,item) in filteredImages.enumerated() {
                 photoContainer[index] = UIImage.init(cgImage: item!)
             }
             DispatchQueue.main.async {
