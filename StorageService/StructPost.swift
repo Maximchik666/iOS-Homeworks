@@ -24,3 +24,5 @@ public struct Post {
 
 public var viewModel = [post1, post2, post3]
 
+public var photoContainer = [UIImage(named:"IMG-5")!, UIImage(named:"IMG-6")!, UIImage(named:"IMG-7")!, UIImage(named:"IMG-8")!, UIImage(named:"IMG-9")!, UIImage(named:"IMG-10")!, UIImage(named:"IMG-11")!, UIImage(named:"IMG-12")!, UIImage(named:"IMG-13")!, UIImage(named:"IMG-14")!, UIImage(named:"IMG-15")!, UIImage(named:"IMG-16")!, UIImage(named:"IMG-17")!, UIImage(named:"IMG-18")!, UIImage(named:"IMG-19")!, UIImage(named:"IMG-20")!, UIImage(named:"IMG-21")!, UIImage(named:"IMG-22")!, UIImage(named:"IMG-23")!, UIImage(named:"IMG-24")!, UIImage(named:"IMG-25")!, UIImage(named:"IMG-26")!, UIImage(named:"IMG-27")!]
+

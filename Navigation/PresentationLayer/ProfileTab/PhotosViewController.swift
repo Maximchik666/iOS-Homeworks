@@ -7,6 +7,7 @@
 
 import UIKit
 import iOSIntPackage
+import StorageService
 
 private enum Constants {
     
@@ -17,9 +18,7 @@ class PhotosViewController: UIViewController {
     
     weak var coordinator: ProfileTabCoordinator?
     
-    var imagePublisher = ImagePublisherFacade()
-    var imagesBank = [UIImage]()
-    var itemInSection = 0
+    private var temporaryContainer: [CGImage?] = []
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -43,16 +42,11 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         setupViewDidLoad()
         
-        imagePublisher.subscribe(self)
-        imagePublisher.addImagesWithTimer(time: 1, repeat: 20)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        imagePublisher.removeSubscription(for: self)
-        imagePublisher.rechargeImageLibrary()
     }
     
     func setupViewDidLoad (){
@@ -69,22 +63,46 @@ class PhotosViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
             
         ])
+        
+        addingFilters()
     }
+    
+    func addingFilters (){
+        print(DispatchTime.now())
+        
+        ImageProcessor.init().processImagesOnThread(sourceImages: photoContainer, filter: .colorInvert, qos: .userInteractive) { filteredImages in
+            
+            self.temporaryContainer = filteredImages
+            for (index,item) in self.temporaryContainer.enumerated() {
+                photoContainer[index] = UIImage.init(cgImage: item!)
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        print(DispatchTime.now())
+    }
+    
+    
+    func addViews(){
+        view.addSubview(collectionView)
+        
+    }
+    
 }
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        itemInSection
-        
+        photoContainer.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let photo =  collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
-        photo.setupImage(image: imagesBank[indexPath.item])
+        photo.setupImage(image: photoContainer[indexPath.item])
         return photo
     }
     
@@ -96,20 +114,9 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         let width = collectionView.frame.width - (Constants.numberOfItemsInLine - 1) * interItemSpacing - insets.left - insets.right
         let itemWidth = floor(width / Constants.numberOfItemsInLine)
         
-        print("🍏 \(itemWidth)")
-        
         return CGSize(width: itemWidth, height: itemWidth)
         
     }
     
 }
 
-extension PhotosViewController: ImageLibrarySubscriber {
-    
-    func receive(images: [UIImage]) {
-        imagesBank = images
-        itemInSection = imagesBank.count
-        collectionView.reloadData()
-    }
-
-}
