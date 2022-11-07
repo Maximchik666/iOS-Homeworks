@@ -58,18 +58,21 @@ class PhotosViewController: UIViewController {
     }
     
     func addingFilters (){
-        print(DispatchTime.now())
         
-        ImageProcessor.init().processImagesOnThread(sourceImages: photoContainer, filter: .colorInvert, qos: .userInteractive) { filteredImages in
+        var startTime = DispatchTime.now().rawValue
+        var finishTime:dispatch_time_t = 0
+        
+        ImageProcessor.init().processImagesOnThread(sourceImages: photoContainer, filter: .colorInvert, qos: .background) { filteredImages in
             
             for (index,item) in filteredImages.enumerated() {
                 photoContainer[index] = UIImage.init(cgImage: item!)
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                finishTime = DispatchTime.now().rawValue
+                print(finishTime - startTime)
             }
         }
-        print(DispatchTime.now())
     }
 }
 
