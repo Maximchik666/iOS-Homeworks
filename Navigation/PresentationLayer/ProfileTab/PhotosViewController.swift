@@ -7,6 +7,7 @@
 
 import UIKit
 import iOSIntPackage
+import StorageService
 
 private enum Constants {
     
@@ -16,10 +17,6 @@ private enum Constants {
 class PhotosViewController: UIViewController {
     
     weak var coordinator: ProfileTabCoordinator?
-    
-    var imagePublisher = ImagePublisherFacade()
-    var imagesBank = [UIImage]()
-    var itemInSection = 0
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -42,17 +39,6 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewDidLoad()
-        
-        imagePublisher.subscribe(self)
-        imagePublisher.addImagesWithTimer(time: 1, repeat: 20)
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        imagePublisher.removeSubscription(for: self)
-        imagePublisher.rechargeImageLibrary()
     }
     
     func setupViewDidLoad (){
@@ -62,13 +48,31 @@ class PhotosViewController: UIViewController {
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
-            
             collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-            
         ])
+        
+        addingFilters()
+    }
+    
+    func addingFilters (){
+        
+        var startTime = DispatchTime.now().rawValue
+        var finishTime:dispatch_time_t = 0
+        
+        ImageProcessor.init().processImagesOnThread(sourceImages: photoContainer, filter: .colorInvert, qos: .background) { filteredImages in
+            
+            for (index,item) in filteredImages.enumerated() {
+                photoContainer[index] = UIImage.init(cgImage: item!)
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                finishTime = DispatchTime.now().rawValue
+                print(finishTime - startTime)
+            }
+        }
     }
 }
 
@@ -76,15 +80,14 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        itemInSection
-        
+        photoContainer.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let photo =  collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
-        photo.setupImage(image: imagesBank[indexPath.item])
+        photo.setupImage(image: photoContainer[indexPath.item])
         return photo
     }
     
@@ -96,20 +99,9 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         let width = collectionView.frame.width - (Constants.numberOfItemsInLine - 1) * interItemSpacing - insets.left - insets.right
         let itemWidth = floor(width / Constants.numberOfItemsInLine)
         
-        print("🍏 \(itemWidth)")
-        
         return CGSize(width: itemWidth, height: itemWidth)
         
     }
     
 }
 
-extension PhotosViewController: ImageLibrarySubscriber {
-    
-    func receive(images: [UIImage]) {
-        imagesBank = images
-        itemInSection = imagesBank.count
-        collectionView.reloadData()
-    }
-
-}

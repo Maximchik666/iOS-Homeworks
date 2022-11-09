@@ -123,9 +123,9 @@
 		9941EF3C290ECCF8005495BD /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				997710C1290D6DBE000D84E9 /* Coordinators */,
 				995E133228BE392C006B5B63 /* LoginViewController.swift */,
 				997710C5290D77B7000D84E9 /* MainTapBarController.swift */,
-				997710C1290D6DBE000D84E9 /* Coordinators */,
 				99CBBEAD28AD1B8300DDCB77 /* ProfileTab */,
 				99E8363E28AA26710021FAF0 /* FeedTab */,
 			);
