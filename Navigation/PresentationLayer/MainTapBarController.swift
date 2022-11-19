@@ -15,11 +15,10 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         profile.start()
         feed.start()
-                
+        
         viewControllers = [feed.navigationController, profile.navigationController]
     }
-    
 }

@@ -69,9 +69,13 @@ class LoginViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var activityIndicator : UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
     
-    private lazy  var button = CustomButton(title: "Log In")
-    
+    private lazy var button = CustomButton(title: "Log In")
     private lazy var closure: () -> Void = {
         if let loginCheck = self.loginDelegate?.check(self, login: self.loginTextField.text ?? "", password: self.passwordTextField.text ?? "") {
             if loginCheck {
@@ -88,6 +92,22 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    
+    private lazy var guessPassword = CustomButton(title: "Guess Password")
+    private lazy var closureForGuessButton: () -> Void = {
+        
+        self.passwordTextField.text = Checker.shared.password
+        self.guessPassword.isEnabled = false
+        self.guessPassword.backgroundColor = .systemGray
+        self.activityIndicator.startAnimating()
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.bruteForce(passwordToUnlock: Checker.shared.password)
+        }
+    }
+    
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -96,23 +116,13 @@ class LoginViewController: UIViewController {
         addingViews()
         addingConstraints()
         button.target = closure
+        guessPassword.target = closureForGuessButton
     }
     
     func setUserInfo(userInfo: UserService){
         self.userInfo = userInfo
     }
     
-    private func navBarCustomization () {
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(named: "LightGray")
-        appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")! ]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")!]
-        navigationController?.navigationBar.tintColor = UIColor(named: "VKColor")
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -176,8 +186,29 @@ class LoginViewController: UIViewController {
         credentialsStackView.addArrangedSubview(passwordTextField)
         scrollView.addSubview(credentialsStackView)
         scrollView.addSubview(button)
+        scrollView.addSubview(guessPassword)
+        scrollView.addSubview(activityIndicator)
     }
     
+    func bruteForce(passwordToUnlock: String) {
+        let ALLOWED_CHARACTERS:   [String] = String().printable.map { String($0) }
+        
+        var password: String = ""
+        
+        while password != passwordToUnlock {
+            password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
+        }
+        
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.passwordTextField.isSecureTextEntry = false
+            self.passwordTextField.text = password
+            self.guessPassword.isEnabled = true
+            self.guessPassword.backgroundColor = UIColor(named: "VKColor")!
+        }
+        
+    }
     
     func addingConstraints () {
         NSLayoutConstraint.activate([
@@ -203,7 +234,15 @@ class LoginViewController: UIViewController {
             button.heightAnchor.constraint(equalToConstant: 50),
             button.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
             button.topAnchor.constraint(equalTo: credentialsStackView.bottomAnchor, constant: 16),
-            button.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16)
+            button.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16),
+            
+            guessPassword.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 16),
+            guessPassword.heightAnchor.constraint(equalToConstant: 50),
+            guessPassword.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
+            guessPassword.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16),
+            
+            activityIndicator.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
+            activityIndicator.rightAnchor.constraint(equalTo: passwordTextField.rightAnchor, constant: -16),
         ])
     }
 }

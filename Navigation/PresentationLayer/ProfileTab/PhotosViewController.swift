@@ -59,7 +59,7 @@ class PhotosViewController: UIViewController {
     
     func addingFilters (){
         
-        var startTime = DispatchTime.now().rawValue
+        let startTime = DispatchTime.now().rawValue
         var finishTime:dispatch_time_t = 0
         
         ImageProcessor.init().processImagesOnThread(sourceImages: photoContainer, filter: .colorInvert, qos: .background) { filteredImages in
