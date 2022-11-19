@@ -12,8 +12,7 @@ final class SelectedUser {
     static let shared = SelectedUser()
     
     var user: User? = nil
+    var password: String = ""
     
-    private init(user: User? = nil) {
-        self.user = user
-    }
+    private init() {}
 }

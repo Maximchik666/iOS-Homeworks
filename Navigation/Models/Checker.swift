@@ -12,9 +12,13 @@ class Checker {
     static let shared = Checker()
     
     private let login = "admin"
-    private let password = "123"
+    var password: String = {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<3).map{ _ in letters.randomElement()! })
+    }()
     
     private init () {}
+    
     
     func check (login: String, password: String) -> Bool {
         

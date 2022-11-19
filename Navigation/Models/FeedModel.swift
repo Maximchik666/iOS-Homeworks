@@ -10,6 +10,6 @@ import UIKit
 
 class FeedModel {
     
-    var password: String = "123"
+    var password: String = SelectedUser.shared.password
     
 }
