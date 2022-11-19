@@ -138,8 +138,6 @@ class LoginViewController: UIViewController {
                                                object: nil)
     }
     
-    
-    
     private func setupGestures() {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.forcedHidingKeyboard))
@@ -153,11 +151,8 @@ class LoginViewController: UIViewController {
             
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            
             let loginButtonBottomPointY = self.button.frame.origin.y + button.frame.height
-            
             let keyboardOriginY = self.view.frame.height - keyboardHeight
-            
             let yOffset = keyboardOriginY < loginButtonBottomPointY
             ? loginButtonBottomPointY - keyboardOriginY + 32
             : 0

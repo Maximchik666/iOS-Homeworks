@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 extension String {
     var digits:      String { return "0123456789" }
     var lowercase:   String { return "abcdefghijklmnopqrstuvwxyz" }

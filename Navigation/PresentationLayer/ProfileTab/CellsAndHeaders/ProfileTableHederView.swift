@@ -11,6 +11,9 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private var statusText: String = ""
     
+    private let counts = 7
+    private var count = 0
+    
     // MARK: UI Elements Creation
     
     private lazy var statusButton = CustomButton(title: "Show Status")
@@ -75,6 +78,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         addingConstraints()
         addGesture()
         addObserver()
+        changeStatusButtonColour()
     }
     
     required init?(coder: NSCoder) {
@@ -136,6 +140,28 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
             
         ])
         
+    }
+    
+    private func changeStatusButtonColour () {
+        
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+            
+            if self.count % 2 == 0 {
+                self.statusButton.backgroundColor = .systemGreen
+                print("green")
+            } else {
+                self.statusButton.backgroundColor = UIColor(named: "VKColor")!
+                print("VK")
+                
+            }
+                
+            
+            if self.count == self.counts {
+                timer.invalidate()
+            }
+            self.count += 1
+            
+        }
     }
     
     // Recogniser for tap on a Profile Image
