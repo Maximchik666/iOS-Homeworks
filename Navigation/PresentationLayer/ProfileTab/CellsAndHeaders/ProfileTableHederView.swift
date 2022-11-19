@@ -148,19 +148,15 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
             
             if self.count % 2 == 0 {
                 self.statusButton.backgroundColor = .systemGreen
-                print("green")
             } else {
                 self.statusButton.backgroundColor = UIColor(named: "VKColor")!
-                print("VK")
-                
             }
                 
-            
             if self.count == self.counts {
                 timer.invalidate()
             }
-            self.count += 1
             
+            self.count += 1
         }
     }
     
