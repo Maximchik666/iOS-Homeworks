@@ -39,6 +39,7 @@
 		99E8363328AA26110021FAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8363228AA26110021FAF0 /* Assets.xcassets */; };
 		99E8363628AA26110021FAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E8363428AA26110021FAF0 /* LaunchScreen.storyboard */; };
 		99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */; };
+		99FB0AD4292915F20046534C /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AD3292915F20046534C /* BruteForce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		99E8363528AA26110021FAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99E8363728AA26110021FAF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		99FB0AD3292915F20046534C /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				995ACDA02905920F0079559A /* CustomButton.swift */,
 				9988BAF42905B3830056B19A /* FeedModel.swift */,
 				995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */,
+				99FB0AD3292915F20046534C /* BruteForce.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				995ACDA12905920F0079559A /* CustomButton.swift in Sources */,
 				99DEC62A28C61F5200A0CE64 /* PostTableViewCell.swift in Sources */,
 				99E8362E28AA26100021FAF0 /* ProfileViewController.swift in Sources */,
+				99FB0AD4292915F20046534C /* BruteForce.swift in Sources */,
 				997710C0290D6D79000D84E9 /* Coordinator.swift in Sources */,
 				99E8362A28AA26100021FAF0 /* AppDelegate.swift in Sources */,
 				995E133328BE392C006B5B63 /* LoginViewController.swift in Sources */,
