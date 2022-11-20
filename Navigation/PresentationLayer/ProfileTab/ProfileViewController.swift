@@ -100,7 +100,7 @@ class ProfileViewController: UIViewController {
             
         ])
     }
-    
+ 
     // Observer for tapping on Small Profile Image
     private func addObserver() {
         NotificationCenter.default.addObserver(self,
