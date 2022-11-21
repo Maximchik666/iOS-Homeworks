@@ -76,20 +76,28 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var button = CustomButton(title: "Log In")
-    private lazy var closure: () -> Void = {
-        if let loginCheck = self.loginDelegate?.check(self, login: self.loginTextField.text ?? "", password: self.passwordTextField.text ?? "") {
-            if loginCheck {
-                let viewController = MainTabBarController()
-                if let user = self.userInfo?.autorization(login: self.loginTextField.text ?? ""){
-                    SelectedUser.shared.user = user
-                    self.coordinator?.pushToNavBarController(tapBarController: viewController)
-                }
-            } else {
-                let alertController = UIAlertController(title: "Sorry!", message: "Wrong Login Or Password!", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
-                }))
-                self.present(alertController, animated: true, completion: nil)
+    private lazy var closure: () throws -> Void = {
+       
+        do {
+            try self.checkAccess(self.loginTextField.text!, self.passwordTextField.text!)
+            let viewController = MainTabBarController()
+            if let user = self.userInfo?.autorization(login: self.loginTextField.text ?? ""){
+                SelectedUser.shared.user = user
+                self.coordinator?.pushToNavBarController(tapBarController: viewController)
             }
+        }
+        
+        catch AppErrors.userIsNotFound {
+            let alertController = UIAlertController(title: "Sorry!", message: "Wrong Login Or Password!", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
+            }))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        catch {
+            let alertController = UIAlertController(title: "Sorry!", message: "Something Unknown is Happend", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
+            }))
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -117,6 +125,12 @@ class LoginViewController: UIViewController {
         addingConstraints()
         button.target = closure
         guessPassword.target = closureForGuessButton
+    }
+    
+    func checkAccess(_ login : String, _ password : String) throws {
+        if !(self.loginDelegate?.check(self, login: login, password: password))! {
+            throw AppErrors.userIsNotFound
+        }
     }
     
     func setUserInfo(userInfo: UserService){
