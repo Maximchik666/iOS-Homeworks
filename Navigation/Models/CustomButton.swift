@@ -11,7 +11,7 @@ import UIKit
 
 class CustomButton: UIButton {
     
-    var target: ()->Void = { }
+    var target: () throws -> Void = { }
     
     init(backgroundColor: UIColor = UIColor(named: "VKColor")!, title: String) {
         super.init(frame: .zero)
@@ -26,5 +26,5 @@ class CustomButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func didTapButton(){target()}
+    @objc func didTapButton() throws {try target()}
 }
