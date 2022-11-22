@@ -8,6 +8,7 @@
 import Foundation
 
 enum AppErrors: Error {
+    
     case userIsNotFound
     case statusNotEntered
 }

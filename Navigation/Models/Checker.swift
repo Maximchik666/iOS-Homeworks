@@ -11,7 +11,7 @@ class Checker {
     
     static let shared = Checker()
     
-    private let login = "admin"
+    private let login = ""
     var password: String = {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<3).map{ _ in letters.randomElement()! })

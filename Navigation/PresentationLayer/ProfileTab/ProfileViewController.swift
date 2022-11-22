@@ -61,6 +61,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
+        
         addingSubViewsAndConstraints()
     }
     
