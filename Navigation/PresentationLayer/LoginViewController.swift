@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
     
     private lazy var button = CustomButton(title: "Log In")
     private lazy var closure: () throws -> Void = {
-       
+        
         do {
             try self.checkAccess(self.loginTextField.text!, self.passwordTextField.text!)
             let viewController = MainTabBarController()
@@ -124,7 +124,7 @@ class LoginViewController: UIViewController {
         addingViews()
         addingConstraints()
         button.target = closure
-        guessPassword.target = closureForGuessButton
+        guessPassword.target = closureForGuessButton        
     }
     
     func checkAccess(_ login : String, _ password : String) throws {
