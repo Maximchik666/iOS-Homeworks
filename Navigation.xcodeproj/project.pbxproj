@@ -41,6 +41,14 @@
 		99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */; };
 		99FB0AD4292915F20046534C /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AD3292915F20046534C /* BruteForce.swift */; };
 		99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AD7292BBB430046534C /* AppErrors.swift */; };
+		99FB0ADB292CEED80046534C /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADA292CEED80046534C /* MediaViewController.swift */; };
+		99FB0ADD292CF0B10046534C /* MediaTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */; };
+		99FB0AE0292CF59C0046534C /* Шедевр 01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99FB0ADF292CF59C0046534C /* Шедевр 01.mp3 */; };
+		99FB0AE5292CF66D0046534C /* Шедевр 05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99FB0AE1292CF66D0046534C /* Шедевр 05.mp3 */; };
+		99FB0AE6292CF66D0046534C /* Шедевр 04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99FB0AE2292CF66D0046534C /* Шедевр 04.mp3 */; };
+		99FB0AE7292CF66D0046534C /* Шедевр 03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99FB0AE3292CF66D0046534C /* Шедевр 03.mp3 */; };
+		99FB0AE8292CF66D0046534C /* Шедевр 02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99FB0AE4292CF66D0046534C /* Шедевр 02.mp3 */; };
+		99FB0AEA292D0C360046534C /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AE9292D0C360046534C /* PlayerButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +110,14 @@
 		99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		99FB0AD3292915F20046534C /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		99FB0AD7292BBB430046534C /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
+		99FB0ADA292CEED80046534C /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
+		99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTabCoordinator.swift; sourceTree = "<group>"; };
+		99FB0ADF292CF59C0046534C /* Шедевр 01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Шедевр 01.mp3"; sourceTree = "<group>"; };
+		99FB0AE1292CF66D0046534C /* Шедевр 05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Шедевр 05.mp3"; sourceTree = "<group>"; };
+		99FB0AE2292CF66D0046534C /* Шедевр 04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Шедевр 04.mp3"; sourceTree = "<group>"; };
+		99FB0AE3292CF66D0046534C /* Шедевр 03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Шедевр 03.mp3"; sourceTree = "<group>"; };
+		99FB0AE4292CF66D0046534C /* Шедевр 02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Шедевр 02.mp3"; sourceTree = "<group>"; };
+		99FB0AE9292D0C360046534C /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +146,7 @@
 				997710C1290D6DBE000D84E9 /* Coordinators */,
 				995E133228BE392C006B5B63 /* LoginViewController.swift */,
 				997710C5290D77B7000D84E9 /* MainTapBarController.swift */,
+				99FB0AD9292CEE8C0046534C /* MediaTab */,
 				99CBBEAD28AD1B8300DDCB77 /* ProfileTab */,
 				99E8363E28AA26710021FAF0 /* FeedTab */,
 			);
@@ -164,6 +181,7 @@
 				997710C7290D7A69000D84E9 /* FeedCoordinator.swift */,
 				995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */,
 				997710C9290D7CEF000D84E9 /* ProfileTabCoordinator.swift */,
+				99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -194,6 +212,7 @@
 				998B16D428FAE36400DE194C /* UserInfo.swift */,
 				998B16D628FDB93800DE194C /* Checker.swift */,
 				995ACDA02905920F0079559A /* CustomButton.swift */,
+				99FB0AE9292D0C360046534C /* PlayerButton.swift */,
 				9988BAF42905B3830056B19A /* FeedModel.swift */,
 				995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */,
 				99FB0AD3292915F20046534C /* BruteForce.swift */,
@@ -235,6 +254,7 @@
 				99E8363D28AA264F0021FAF0 /* ApplicationLayer */,
 				99CBBE8C28ACEC0100DDCB77 /* Models */,
 				9941EF3C290ECCF8005495BD /* PresentationLayer */,
+				99FB0ADE292CF57C0046534C /* MediaFiles */,
 				99E8363228AA26110021FAF0 /* Assets.xcassets */,
 				99E8363428AA26110021FAF0 /* LaunchScreen.storyboard */,
 				99E8363728AA26110021FAF0 /* Info.plist */,
@@ -258,6 +278,26 @@
 				99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */,
 			);
 			path = FeedTab;
+			sourceTree = "<group>";
+		};
+		99FB0AD9292CEE8C0046534C /* MediaTab */ = {
+			isa = PBXGroup;
+			children = (
+				99FB0ADA292CEED80046534C /* MediaViewController.swift */,
+			);
+			path = MediaTab;
+			sourceTree = "<group>";
+		};
+		99FB0ADE292CF57C0046534C /* MediaFiles */ = {
+			isa = PBXGroup;
+			children = (
+				99FB0ADF292CF59C0046534C /* Шедевр 01.mp3 */,
+				99FB0AE4292CF66D0046534C /* Шедевр 02.mp3 */,
+				99FB0AE3292CF66D0046534C /* Шедевр 03.mp3 */,
+				99FB0AE2292CF66D0046534C /* Шедевр 04.mp3 */,
+				99FB0AE1292CF66D0046534C /* Шедевр 05.mp3 */,
+			);
+			path = MediaFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +406,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99FB0AE8292CF66D0046534C /* Шедевр 02.mp3 in Resources */,
+				99FB0AE6292CF66D0046534C /* Шедевр 04.mp3 in Resources */,
+				99FB0AE7292CF66D0046534C /* Шедевр 03.mp3 in Resources */,
+				99FB0AE0292CF59C0046534C /* Шедевр 01.mp3 in Resources */,
+				99FB0AE5292CF66D0046534C /* Шедевр 05.mp3 in Resources */,
 				99E8363628AA26110021FAF0 /* LaunchScreen.storyboard in Resources */,
 				99E8363328AA26110021FAF0 /* Assets.xcassets in Resources */,
 			);
@@ -403,6 +448,7 @@
 				99E8362A28AA26100021FAF0 /* AppDelegate.swift in Sources */,
 				995E133328BE392C006B5B63 /* LoginViewController.swift in Sources */,
 				9941EF40290ECF5F005495BD /* FeedViewModel.swift in Sources */,
+				99FB0ADB292CEED80046534C /* MediaViewController.swift in Sources */,
 				99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */,
 				99BEAD5D28AA48F400F8A03F /* InfoViewController.swift in Sources */,
 				997248D228C4B92D00C06B64 /* TextFieldWithPadding.swift in Sources */,
@@ -411,8 +457,10 @@
 				99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */,
 				997710C4290D6E4C000D84E9 /* AppCoordinator.swift in Sources */,
 				99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */,
+				99FB0AEA292D0C360046534C /* PlayerButton.swift in Sources */,
 				998B16D528FAE36400DE194C /* UserInfo.swift in Sources */,
 				995B5B5F28C62A00007F027F /* ProfileTableHederView.swift in Sources */,
+				99FB0ADD292CF0B10046534C /* MediaTabCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

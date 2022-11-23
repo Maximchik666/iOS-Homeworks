@@ -19,10 +19,10 @@ class AppCoordinator: Coordinator {
     func start() {
         
 #if DEBUG
-        let userInfo = TestUserService(user: User(login: "admin", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin'"))
+        let userInfo = TestUserService(user: User(login: "", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin'"))
         SelectedUser.shared.user = userInfo.user
 #else
-        let userInfo = CurrentUserService(user:User(login: "admin", fullName: "Admin Adminov", avatar: UIImage(named: "Ava2")!, status: "Strugglin'") )
+        let userInfo = CurrentUserService(user:User(login: "", fullName: "Admin Adminov", avatar: UIImage(named: "Ava2")!, status: "Strugglin'") )
         SelectedUser.shared.user = userInfo.user
 #endif
         
@@ -30,12 +30,12 @@ class AppCoordinator: Coordinator {
         
         vc.setUserInfo(userInfo: userInfo)
         vc.loginDelegate = MyLoginFactory().makeLoginInspector()
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+    //    vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
  
-    func pushToNavBarController (tapBarController : MainTabBarController ){
+    func pushToTabBarController (tapBarController : MainTabBarController ){
         navigationController.pushViewController(tapBarController, animated: true)
     }
     

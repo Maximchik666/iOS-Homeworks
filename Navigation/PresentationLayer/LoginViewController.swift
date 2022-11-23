@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
             let viewController = MainTabBarController()
             if let user = self.userInfo?.autorization(login: self.loginTextField.text ?? ""){
                 SelectedUser.shared.user = user
-                self.coordinator?.pushToNavBarController(tapBarController: viewController)
+                self.coordinator?.pushToTabBarController(tapBarController: viewController)
             }
         }
         
@@ -216,7 +216,6 @@ class LoginViewController: UIViewController {
             self.guessPassword.isEnabled = true
             self.guessPassword.backgroundColor = UIColor(named: "VKColor")!
         }
-        
     }
     
     func addingConstraints () {

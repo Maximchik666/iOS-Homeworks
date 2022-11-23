@@ -12,13 +12,17 @@ class MainTabBarController: UITabBarController {
     
     let profile = ProfileTabCoordinator(navigationController: UINavigationController())
     let feed = FeedCoordinator(navigationController: UINavigationController())
+    let media = MediaTabCoordinator(navigationController: UINavigationController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         profile.start()
         feed.start()
+        media.start()
         
-        viewControllers = [feed.navigationController, profile.navigationController]
+        UITabBar.appearance().backgroundColor = .systemBackground
+        UITabBar.appearance().tintColor = UIColor(named: "VKColour")
+        viewControllers = [feed.navigationController,  media.navigationController, profile.navigationController]
     }
 }
