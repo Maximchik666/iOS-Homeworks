@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    var appConfiguration: AppConfiguration?
     var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -26,8 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator.init(navigationController: navigationController)
         appCoordinator?.start()
         
-        return true
+        appConfiguration = AppConfiguration.allCases.randomElement()
         
+        if let currentConfiguration = appConfiguration {
+            NetworkService.request(forConfiguration: currentConfiguration)
+        } else {print ("Something Went Wrong((((")}
+       
+        return true
     }
-    
 }
