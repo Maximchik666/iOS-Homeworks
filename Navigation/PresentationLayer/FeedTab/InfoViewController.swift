@@ -13,22 +13,6 @@ class InfoViewController: UIViewController {
     
     let alertController = UIAlertController(title: "Hi!", message: "Have a good day!", preferredStyle: .alert)
     
-    func setupAlertConfiguration() {
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
-            print("alert") }))
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            print("alert") }))
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemYellow
-        self.view.addSubview(self.button)
-        self.button.center = self.view.center
-        setupAlertConfiguration()
-    }
-    
-    
     private lazy var button: UIButton = {
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 50))
         button.backgroundColor  = .brown
@@ -38,8 +22,30 @@ class InfoViewController: UIViewController {
         return button
     }()
     
+    private lazy var jsonLabel: UILabel = {
+       let label = UILabel(frame: CGRect(x: 200, y: 200, width: 200, height: 50))
+        label.text = "SomeText"
+        return label
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemYellow
+        self.view.addSubview(self.button)
+        self.button.center = self.view.center
+        setupAlertConfiguration()
+    }
+    
     @objc func addTarget() {
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func setupAlertConfiguration() {
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+            print("alert") }))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            print("alert") }))
     }
     
 }
