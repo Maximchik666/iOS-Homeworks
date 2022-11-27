@@ -31,6 +31,7 @@
 		998C0D4E28F03950009BD0B4 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998C0D3928F03950009BD0B4 /* StorageService.framework */; };
 		998C0D4F28F03950009BD0B4 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 998C0D3928F03950009BD0B4 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		998C0D5728F039B7009BD0B4 /* StructPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CBBE8A28ACEBC200DDCB77 /* StructPost.swift */; };
+		99B91E9829338F8E00242D64 /* JSONReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B91E9729338F8E00242D64 /* JSONReceiver.swift */; };
 		99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEAD5A28AA48CB00F8A03F /* PostViewController.swift */; };
 		99BEAD5D28AA48F400F8A03F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */; };
 		99DEC62A28C61F5200A0CE64 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DEC62928C61F5200A0CE64 /* PostTableViewCell.swift */; };
@@ -99,6 +100,7 @@
 		998C0D3928F03950009BD0B4 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		998C0D3B28F03950009BD0B4 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		998C0D3C28F03950009BD0B4 /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
+		99B91E9729338F8E00242D64 /* JSONReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONReceiver.swift; sourceTree = "<group>"; };
 		99BEAD5A28AA48CB00F8A03F /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		99BEAD5C28AA48F400F8A03F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		99CBBE8A28ACEBC200DDCB77 /* StructPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructPost.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */,
 				99FB0AD3292915F20046534C /* BruteForce.swift */,
 				99FB0AEB292E3B120046534C /* NetworkService.swift */,
+				99B91E9729338F8E00242D64 /* JSONReceiver.swift */,
 				99FB0AED292E3B6F0046534C /* AppConfiguration.swift */,
 			);
 			path = Models;
@@ -466,6 +469,7 @@
 				99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */,
 				99FB0AEA292D0C360046534C /* PlayerButton.swift in Sources */,
 				998B16D528FAE36400DE194C /* UserInfo.swift in Sources */,
+				99B91E9829338F8E00242D64 /* JSONReceiver.swift in Sources */,
 				99FB0AEE292E3B6F0046534C /* AppConfiguration.swift in Sources */,
 				995B5B5F28C62A00007F027F /* ProfileTableHederView.swift in Sources */,
 				99FB0ADD292CF0B10046534C /* MediaTabCoordinator.swift in Sources */,

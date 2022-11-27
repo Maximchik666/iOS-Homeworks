@@ -124,7 +124,8 @@ class LoginViewController: UIViewController {
         addingViews()
         addingConstraints()
         button.target = closure
-        guessPassword.target = closureForGuessButton        
+        guessPassword.target = closureForGuessButton
+
     }
     
     func checkAccess(_ login : String, _ password : String) throws {

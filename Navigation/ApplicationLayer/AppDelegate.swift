@@ -31,6 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let currentConfiguration = appConfiguration {
             NetworkService.request(forConfiguration: currentConfiguration)
         } else {print ("Something Went Wrong((((")}
+        
+        JSONReceiver.receiveJSON(forConfiguration: .fourth)
+        JSONReceiver.receiveJSON(forConfiguration: .fifth)
        
         return true
     }
