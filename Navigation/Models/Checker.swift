@@ -6,49 +6,67 @@
 //
 
 import Foundation
+import FirebaseAuth
+import UIKit
 
-class Checker {
+protocol CheckerServiceProtocol {
     
-    static let shared = Checker()
+    func checkCredential(_ sender: LoginViewController, login: String, password: String)
     
-    private let login = ""
-    var password: String = {
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0..<3).map{ _ in letters.randomElement()! })
-    }()
+    func signUp (_ sender: LoginViewController, login: String, password: String)
     
-    private init () {}
+}
+
+class CheckerService: CheckerServiceProtocol, LoginViewControllerDelegate {
     
+    func checkCredential(_ sender: LoginViewController, login: String, password: String) {
+        Auth.auth().signIn(withEmail: login, password: password) {authResult, error in
+            
+            guard let user = authResult?.user, error == nil else {
+                let alertController = UIAlertController(title: "Sorry!", message: error!.localizedDescription, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
+                }))
+                sender.present(alertController, animated: true, completion: nil)
+                print(error!.localizedDescription)
+                return
+            }
+            sender.coordinator?.pushToTabBarController(tapBarController: MainTabBarController())
+            print("\(user.email!) Has Loged In")
+        }
+    }
     
-    func check (login: String, password: String) -> Bool {
-        
-        login == self.login && password == self.password ? true : false
-        
-        
+    func signUp (_ sender: LoginViewController, login: String, password: String) {
+        Auth.auth().createUser(withEmail: login, password: password) { authResult, error in
+            
+            guard let user = authResult?.user, error == nil else {
+                let alertController = UIAlertController(title: "Sorry!", message: error!.localizedDescription, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
+                }))
+                sender.present(alertController, animated: true, completion: nil)
+                print(error!.localizedDescription)
+                return
+            }
+            sender.coordinator?.pushToTabBarController(tapBarController: MainTabBarController())
+            print("\(user.email!) created")
+        }
     }
 }
+
+
 
 protocol LoginViewControllerDelegate {
     
-    func check (_ sender: LoginViewController,
-                login: String,
-                password: String) -> Bool
-}
-
-struct LoginInspector: LoginViewControllerDelegate {
+    func checkCredential(_ sender: LoginViewController, login: String, password: String)
     
-    func check(_ sender: LoginViewController, login: String, password: String) -> Bool {
-        Checker.shared.check(login: login, password: password)
-    }
+    func signUp (_ sender: LoginViewController, login: String, password: String)
 }
-
 
 protocol LoginFactory {
-    func makeLoginInspector () -> LoginInspector
+    func makeLoginInspector () -> CheckerService
 }
 
 struct MyLoginFactory: LoginFactory {
-    func makeLoginInspector() -> LoginInspector {
-        LoginInspector()
+    func makeLoginInspector() -> CheckerService {
+        CheckerService()
     }
 }
