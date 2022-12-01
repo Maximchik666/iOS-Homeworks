@@ -33,7 +33,8 @@ class LoginViewController: UIViewController {
         
         let loginTextField = TextFieldWithPadding()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginTextField.placeholder = "Email or Phone Number"
+        loginTextField.placeholder = "Please Enter Your Email"
+        loginTextField.keyboardType = .emailAddress
         loginTextField.clearButtonMode = .whileEditing
         return loginTextField
     }()
@@ -78,28 +79,6 @@ class LoginViewController: UIViewController {
     private lazy var button = CustomButton(title: "Log In")
     private lazy var closure: () throws -> Void = { [self] in
         loginDelegate?.checkCredential(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
-        
-//        do {
-//            try self.checkAccess(self.loginTextField.text!, self.passwordTextField.text!)
-//            let viewController = MainTabBarController()
-//            if let user = self.userInfo?.autorization(login: self.loginTextField.text ?? ""){
-//                SelectedUser.shared.user = user
-//                self.coordinator?.pushToTabBarController(tapBarController: viewController)
-//            }
-//        }
-//
-//        catch AppErrors.userIsNotFound {
-//            let alertController = UIAlertController(title: "Sorry!", message: "Wrong Login Or Password!", preferredStyle: .alert)
-//            alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
-//            }))
-//            self.present(alertController, animated: true, completion: nil)
-//        }
-//        catch {
-//            let alertController = UIAlertController(title: "Sorry!", message: "Something Unknown is Happend", preferredStyle: .alert)
-//            alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
-//            }))
-//            self.present(alertController, animated: true, completion: nil)
-//        }
     }
     
     
