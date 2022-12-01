@@ -19,17 +19,19 @@ struct NetworkService {
             let task = urlSession.dataTask(with: request, completionHandler: {data, responce, error in
                 
                 if let unwrappedData = data {
-                    print("Unwrapped Data: \(String(data: unwrappedData, encoding: .utf8) ?? "Error(((")")
+                   // print("Unwrapped Data: \(String(data: unwrappedData, encoding: .utf8) ?? "Error(((")")
                 }
                
                 if let unwrappedResponce = responce as? HTTPURLResponse {
-                    print("AllHeadersField: \(unwrappedResponce.allHeaderFields)")
-                    print("StatusCode: \(unwrappedResponce.statusCode)")
+                  //  print("AllHeadersField: \(unwrappedResponce.allHeaderFields)")
+                  //  print("StatusCode: \(unwrappedResponce.statusCode)")
                 }
                 
                 if let unwrappedError = error {
-                    print("Error Code: \(unwrappedError.localizedDescription)")
-                } else {print("No Errors")}
+                   // print("Error Code: \(unwrappedError.localizedDescription)")
+                } else {
+                   // print("No Errors")
+                }
 
             })
             
