@@ -9,21 +9,20 @@
 /* Begin PBXBuildFile section */
 		990F39B228CA18060037D08A /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F39B128CA18060037D08A /* PhotosTableViewCell.swift */; };
 		990F39B428CA18B80037D08A /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990F39B328CA18B80037D08A /* PhotosViewController.swift */; };
-		9941EF40290ECF5F005495BD /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941EF3F290ECF5F005495BD /* FeedViewModel.swift */; };
+		992200B22937B296005F880C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 992200B12937B296005F880C /* FirebaseAuth */; };
+		992200B42938DE2C005F880C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 992200B32938DE2C005F880C /* GoogleService-Info.plist */; };
+		992200B52938DE2C005F880C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 992200B32938DE2C005F880C /* GoogleService-Info.plist */; };
 		995ACD9F2902D7990079559A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 995ACD9E2902D7990079559A /* iOSIntPackage */; };
-		995ACDA12905920F0079559A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995ACDA02905920F0079559A /* CustomButton.swift */; };
 		995B5B5F28C62A00007F027F /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B5B5E28C62A00007F027F /* ProfileTableHederView.swift */; };
 		995D7DA3290DA620000E31E4 /* SelectedUserSingletone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */; };
 		995D7DA5290EACAC000E31E4 /* PostViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */; };
 		995E133328BE392C006B5B63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E133228BE392C006B5B63 /* LoginViewController.swift */; };
 		996F0C6628CA321400BEB2D1 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F0C6528CA321400BEB2D1 /* PhotoCollectionViewCell.swift */; };
-		997248D228C4B92D00C06B64 /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */; };
 		997710C0290D6D79000D84E9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710BF290D6D79000D84E9 /* Coordinator.swift */; };
 		997710C4290D6E4C000D84E9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710C3290D6E4C000D84E9 /* AppCoordinator.swift */; };
 		997710C6290D77B7000D84E9 /* MainTapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710C5290D77B7000D84E9 /* MainTapBarController.swift */; };
 		997710C8290D7A69000D84E9 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710C7290D7A69000D84E9 /* FeedCoordinator.swift */; };
 		997710CA290D7CEF000D84E9 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710C9290D7CEF000D84E9 /* ProfileTabCoordinator.swift */; };
-		9988BAF52905B3830056B19A /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9988BAF42905B3830056B19A /* FeedModel.swift */; };
 		998B16D528FAE36400DE194C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B16D428FAE36400DE194C /* UserInfo.swift */; };
 		998B16D728FDB93800DE194C /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B16D628FDB93800DE194C /* Checker.swift */; };
 		998C0D3D28F03950009BD0B4 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 998C0D3C28F03950009BD0B4 /* StorageService.docc */; };
@@ -40,7 +39,6 @@
 		99E8363328AA26110021FAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8363228AA26110021FAF0 /* Assets.xcassets */; };
 		99E8363628AA26110021FAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E8363428AA26110021FAF0 /* LaunchScreen.storyboard */; };
 		99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */; };
-		99FB0AD4292915F20046534C /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AD3292915F20046534C /* BruteForce.swift */; };
 		99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AD7292BBB430046534C /* AppErrors.swift */; };
 		99FB0ADB292CEED80046534C /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADA292CEED80046534C /* MediaViewController.swift */; };
 		99FB0ADD292CF0B10046534C /* MediaTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */; };
@@ -49,7 +47,7 @@
 		99FB0AE6292CF66D0046534C /* Шедевр 04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99FB0AE2292CF66D0046534C /* Шедевр 04.mp3 */; };
 		99FB0AE7292CF66D0046534C /* Шедевр 03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99FB0AE3292CF66D0046534C /* Шедевр 03.mp3 */; };
 		99FB0AE8292CF66D0046534C /* Шедевр 02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99FB0AE4292CF66D0046534C /* Шедевр 02.mp3 */; };
-		99FB0AEA292D0C360046534C /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AE9292D0C360046534C /* PlayerButton.swift */; };
+		99FB0AEA292D0C360046534C /* CustomUIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AE9292D0C360046534C /* CustomUIElements.swift */; };
 		99FB0AEC292E3B120046534C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AEB292E3B120046534C /* NetworkService.swift */; };
 		99FB0AEE292E3B6F0046534C /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AED292E3B6F0046534C /* AppConfiguration.swift */; };
 /* End PBXBuildFile section */
@@ -81,20 +79,17 @@
 /* Begin PBXFileReference section */
 		990F39B128CA18060037D08A /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		990F39B328CA18B80037D08A /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
-		9941EF3F290ECF5F005495BD /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
-		995ACDA02905920F0079559A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		992200B32938DE2C005F880C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		995B5B5E28C62A00007F027F /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserSingletone.swift; sourceTree = "<group>"; };
 		995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCoordinator.swift; sourceTree = "<group>"; };
 		995E133228BE392C006B5B63 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		996F0C6528CA321400BEB2D1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		997710BF290D6D79000D84E9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		997710C3290D6E4C000D84E9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		997710C5290D77B7000D84E9 /* MainTapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapBarController.swift; sourceTree = "<group>"; };
 		997710C7290D7A69000D84E9 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		997710C9290D7CEF000D84E9 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
-		9988BAF42905B3830056B19A /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		998B16D428FAE36400DE194C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		998B16D628FDB93800DE194C /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		998C0D3928F03950009BD0B4 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,7 +107,6 @@
 		99E8363528AA26110021FAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99E8363728AA26110021FAF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		99FB0AD3292915F20046534C /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 		99FB0AD7292BBB430046534C /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		99FB0ADA292CEED80046534C /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTabCoordinator.swift; sourceTree = "<group>"; };
@@ -121,7 +115,7 @@
 		99FB0AE2292CF66D0046534C /* Шедевр 04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Шедевр 04.mp3"; sourceTree = "<group>"; };
 		99FB0AE3292CF66D0046534C /* Шедевр 03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Шедевр 03.mp3"; sourceTree = "<group>"; };
 		99FB0AE4292CF66D0046534C /* Шедевр 02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Шедевр 02.mp3"; sourceTree = "<group>"; };
-		99FB0AE9292D0C360046534C /* PlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
+		99FB0AE9292D0C360046534C /* CustomUIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIElements.swift; sourceTree = "<group>"; };
 		99FB0AEB292E3B120046534C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		99FB0AED292E3B6F0046534C /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				998C0D4E28F03950009BD0B4 /* StorageService.framework in Frameworks */,
+				992200B22937B296005F880C /* FirebaseAuth in Frameworks */,
 				995ACD9F2902D7990079559A /* iOSIntPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,7 +169,6 @@
 			isa = PBXGroup;
 			children = (
 				99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */,
-				9941EF3F290ECF5F005495BD /* FeedViewModel.swift */,
 			);
 			path = FeedScreenModule;
 			sourceTree = "<group>";
@@ -213,15 +207,11 @@
 		99CBBE8C28ACEC0100DDCB77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				997248D128C4B92D00C06B64 /* TextFieldWithPadding.swift */,
 				99FB0AD7292BBB430046534C /* AppErrors.swift */,
 				998B16D428FAE36400DE194C /* UserInfo.swift */,
 				998B16D628FDB93800DE194C /* Checker.swift */,
-				995ACDA02905920F0079559A /* CustomButton.swift */,
-				99FB0AE9292D0C360046534C /* PlayerButton.swift */,
-				9988BAF42905B3830056B19A /* FeedModel.swift */,
+				99FB0AE9292D0C360046534C /* CustomUIElements.swift */,
 				995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */,
-				99FB0AD3292915F20046534C /* BruteForce.swift */,
 				99FB0AEB292E3B120046534C /* NetworkService.swift */,
 				99B91E9729338F8E00242D64 /* JSONReceiver.swift */,
 				99FB0AED292E3B6F0046534C /* AppConfiguration.swift */,
@@ -242,6 +232,7 @@
 		99E8361D28AA26100021FAF0 = {
 			isa = PBXGroup;
 			children = (
+				992200B32938DE2C005F880C /* GoogleService-Info.plist */,
 				99E8362828AA26100021FAF0 /* Navigation */,
 				998C0D3A28F03950009BD0B4 /* StorageService */,
 				99E8362728AA26100021FAF0 /* Products */,
@@ -358,6 +349,7 @@
 			name = Navigation;
 			packageProductDependencies = (
 				995ACD9E2902D7990079559A /* iOSIntPackage */,
+				992200B12937B296005F880C /* FirebaseAuth */,
 			);
 			productName = Navigation;
 			productReference = 99E8362628AA26100021FAF0 /* Navigation.app */;
@@ -392,6 +384,7 @@
 			mainGroup = 99E8361D28AA26100021FAF0;
 			packageReferences = (
 				995ACD9D2902D7990079559A /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				992200B02937B296005F880C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 99E8362728AA26100021FAF0 /* Products */;
 			projectDirPath = "";
@@ -408,6 +401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992200B52938DE2C005F880C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99FB0AE8292CF66D0046534C /* Шедевр 02.mp3 in Resources */,
+				992200B42938DE2C005F880C /* GoogleService-Info.plist in Resources */,
 				99FB0AE6292CF66D0046534C /* Шедевр 04.mp3 in Resources */,
 				99FB0AE7292CF66D0046534C /* Шедевр 03.mp3 in Resources */,
 				99FB0AE0292CF59C0046534C /* Шедевр 01.mp3 in Resources */,
@@ -445,29 +440,24 @@
 				997710CA290D7CEF000D84E9 /* ProfileTabCoordinator.swift in Sources */,
 				996F0C6628CA321400BEB2D1 /* PhotoCollectionViewCell.swift in Sources */,
 				998B16D728FDB93800DE194C /* Checker.swift in Sources */,
-				9988BAF52905B3830056B19A /* FeedModel.swift in Sources */,
 				990F39B228CA18060037D08A /* PhotosTableViewCell.swift in Sources */,
 				997710C6290D77B7000D84E9 /* MainTapBarController.swift in Sources */,
 				990F39B428CA18B80037D08A /* PhotosViewController.swift in Sources */,
-				995ACDA12905920F0079559A /* CustomButton.swift in Sources */,
 				99DEC62A28C61F5200A0CE64 /* PostTableViewCell.swift in Sources */,
 				99E8362E28AA26100021FAF0 /* ProfileViewController.swift in Sources */,
-				99FB0AD4292915F20046534C /* BruteForce.swift in Sources */,
 				99FB0AEC292E3B120046534C /* NetworkService.swift in Sources */,
 				997710C0290D6D79000D84E9 /* Coordinator.swift in Sources */,
 				99E8362A28AA26100021FAF0 /* AppDelegate.swift in Sources */,
 				995E133328BE392C006B5B63 /* LoginViewController.swift in Sources */,
-				9941EF40290ECF5F005495BD /* FeedViewModel.swift in Sources */,
 				99FB0ADB292CEED80046534C /* MediaViewController.swift in Sources */,
 				99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */,
 				99BEAD5D28AA48F400F8A03F /* InfoViewController.swift in Sources */,
-				997248D228C4B92D00C06B64 /* TextFieldWithPadding.swift in Sources */,
 				995D7DA5290EACAC000E31E4 /* PostViewCoordinator.swift in Sources */,
 				995D7DA3290DA620000E31E4 /* SelectedUserSingletone.swift in Sources */,
 				99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */,
 				997710C4290D6E4C000D84E9 /* AppCoordinator.swift in Sources */,
 				99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */,
-				99FB0AEA292D0C360046534C /* PlayerButton.swift in Sources */,
+				99FB0AEA292D0C360046534C /* CustomUIElements.swift in Sources */,
 				998B16D528FAE36400DE194C /* UserInfo.swift in Sources */,
 				99B91E9829338F8E00242D64 /* JSONReceiver.swift in Sources */,
 				99FB0AEE292E3B6F0046534C /* AppConfiguration.swift in Sources */,
@@ -777,6 +767,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		992200B02937B296005F880C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		995ACD9D2902D7990079559A /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
@@ -788,6 +786,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		992200B12937B296005F880C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 992200B02937B296005F880C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		995ACD9E2902D7990079559A /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 995ACD9D2902D7990079559A /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
