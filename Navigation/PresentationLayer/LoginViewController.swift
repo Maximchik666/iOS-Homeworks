@@ -77,8 +77,10 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var button = CustomButton(title: "Log In")
-    private lazy var closure: () throws -> Void = { [self] in
-        loginDelegate?.checkCredential(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
+    private lazy var closure: () throws -> Void = {
+//        [self] in
+//        loginDelegate?.checkCredential(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
+        self.navigationController?.pushViewController(MainTabBarController(), animated: true)
     }
     
     
