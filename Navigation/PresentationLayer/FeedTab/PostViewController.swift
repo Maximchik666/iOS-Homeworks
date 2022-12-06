@@ -27,7 +27,7 @@ class PostViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         coordinator?.destroyMe()
-            }
+    }
     
     @objc private func didTapButton() {
         self.coordinator?.openInfoViewController()

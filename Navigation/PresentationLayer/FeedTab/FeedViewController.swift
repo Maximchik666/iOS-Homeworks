@@ -13,8 +13,6 @@ class FeedViewController: UIViewController {
     
     weak var coordinator: FeedCoordinator?
     
-   // var viewModel = FeedViewModel()
-    
     // MARK: UI Elements Creation
     
     private lazy var stackView : UIStackView = {
