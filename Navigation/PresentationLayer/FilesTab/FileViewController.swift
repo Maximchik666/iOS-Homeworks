@@ -13,8 +13,21 @@ class FileViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var fileManager: FileManagerServiceProtocol?
     
     var path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    
+    var sortFromAToZ = UserDefaults.standard.bool(forKey: "SortPattern") 
+    
     var content: [DataForFileTab] {
-        fileManager?.contentsOfDirectory(atPath: path) ?? []
+        if sortFromAToZ {
+            let filteredContent = fileManager?.contentsOfDirectory(atPath: path) ?? []
+            return filteredContent.sorted { (lhs: DataForFileTab, rhs: DataForFileTab) -> Bool in
+                return lhs.name < rhs.name
+            }
+        } else {
+            let filteredContent = fileManager?.contentsOfDirectory(atPath: path) ?? []
+            return filteredContent.sorted { (lhs: DataForFileTab, rhs: DataForFileTab) -> Bool in
+                return lhs.name > rhs.name
+            }
+        }
     }
     
     private lazy var tableView: UITableView = {
@@ -37,8 +50,9 @@ class FileViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let url1 = URL(filePath: path)
             title = url1.lastPathComponent
         } else {
-            // Fallback on earlier versions
+            
         }
+        print(sortFromAToZ)
     }
     
     func setConstraints(){
@@ -56,9 +70,11 @@ class FileViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if #available(iOS 16.0, *) {
             
             let createFolderButton = UIBarButtonItem(title: "Create Folder", image: UIImage(systemName: "folder.fill.badge.plus"), target: self, action: #selector(createFolder))
-            
             let addPhotoButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addPhoto))
-            let group = UIBarButtonItemGroup(barButtonItems: [createFolderButton, addPhotoButton], representativeItem: nil)
+            let changePasswordButton = UIBarButtonItem(title: "Change Password", image: UIImage(systemName: "lock"), target: self, action: #selector(changePassword))
+            let sortItemsButton = UIBarButtonItem(title: "Sore Items", image: UIImage(systemName: "arrow.up.and.down.text.horizontal"), target: self, action: #selector(sortItems))
+            
+            let group = UIBarButtonItemGroup(barButtonItems: [createFolderButton, addPhotoButton,changePasswordButton,sortItemsButton], representativeItem: nil)
             
             navigationItem.centerItemGroups = [group]
             
@@ -80,7 +96,18 @@ class FileViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.tableView.reloadData()
     }
     
+    @objc func changePassword() {
+        let vc = FileLoginViewController()
+        vc.modalAppearance = true
+        vc.temporaryPassword = ""
+        navigationController?.present(vc, animated: true)
+    }
     
+    @objc func sortItems() {
+        sortFromAToZ = !sortFromAToZ
+        UserDefaults.standard.set(sortFromAToZ, forKey: "SortPattern")
+        tableView.reloadData()
+    }
 }
 
 extension FileViewController: UITableViewDelegate, UITableViewDataSource {

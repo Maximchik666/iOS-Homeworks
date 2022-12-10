@@ -17,6 +17,8 @@
 		99229227293D25C200110E44 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99229226293D25C200110E44 /* FileManagerService.swift */; };
 		99229229293D2AA400110E44 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99229228293D2AA400110E44 /* DataModel.swift */; };
 		9922922B293D351100110E44 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922922A293D351100110E44 /* InputHandler.swift */; };
+		992292522944D44800110E44 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 992292512944D44800110E44 /* KeychainSwift */; };
+		992292542944D46D00110E44 /* FileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992292532944D46D00110E44 /* FileLoginViewController.swift */; };
 		995ACD9F2902D7990079559A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 995ACD9E2902D7990079559A /* iOSIntPackage */; };
 		995B5B5F28C62A00007F027F /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B5B5E28C62A00007F027F /* ProfileTableHederView.swift */; };
 		995D7DA3290DA620000E31E4 /* SelectedUserSingletone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */; };
@@ -90,6 +92,7 @@
 		99229226293D25C200110E44 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		99229228293D2AA400110E44 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		9922922A293D351100110E44 /* InputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
+		992292532944D46D00110E44 /* FileLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoginViewController.swift; sourceTree = "<group>"; };
 		995B5B5E28C62A00007F027F /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedUserSingletone.swift; sourceTree = "<group>"; };
 		995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCoordinator.swift; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 			files = (
 				998C0D4E28F03950009BD0B4 /* StorageService.framework in Frameworks */,
 				992200B22937B296005F880C /* FirebaseAuth in Frameworks */,
+				992292522944D44800110E44 /* KeychainSwift in Frameworks */,
 				995ACD9F2902D7990079559A /* iOSIntPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +158,7 @@
 		99229221293D1A8800110E44 /* FilesTab */ = {
 			isa = PBXGroup;
 			children = (
+				992292532944D46D00110E44 /* FileLoginViewController.swift */,
 				99229222293D1AAD00110E44 /* FileViewController.swift */,
 				99229226293D25C200110E44 /* FileManagerService.swift */,
 				99229228293D2AA400110E44 /* DataModel.swift */,
@@ -365,6 +370,7 @@
 			packageProductDependencies = (
 				995ACD9E2902D7990079559A /* iOSIntPackage */,
 				992200B12937B296005F880C /* FirebaseAuth */,
+				992292512944D44800110E44 /* KeychainSwift */,
 			);
 			productName = Navigation;
 			productReference = 99E8362628AA26100021FAF0 /* Navigation.app */;
@@ -400,6 +406,7 @@
 			packageReferences = (
 				995ACD9D2902D7990079559A /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 				992200B02937B296005F880C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				992292502944D44800110E44 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 99E8362728AA26100021FAF0 /* Products */;
 			projectDirPath = "";
@@ -452,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				997710C8290D7A69000D84E9 /* FeedCoordinator.swift in Sources */,
+				992292542944D46D00110E44 /* FileLoginViewController.swift in Sources */,
 				997710CA290D7CEF000D84E9 /* ProfileTabCoordinator.swift in Sources */,
 				996F0C6628CA321400BEB2D1 /* PhotoCollectionViewCell.swift in Sources */,
 				998B16D728FDB93800DE194C /* Checker.swift in Sources */,
@@ -795,6 +803,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		992292502944D44800110E44 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		995ACD9D2902D7990079559A /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
@@ -810,6 +826,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 992200B02937B296005F880C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		992292512944D44800110E44 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 992292502944D44800110E44 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 		995ACD9E2902D7990079559A /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
