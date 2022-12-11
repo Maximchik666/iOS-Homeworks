@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
     
+    var realmManager = RealmManager()
     var userInfo: UserService?
     var loginDelegate: LoginViewControllerDelegate?
     
@@ -77,10 +78,8 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var button = CustomButton(title: "Log In")
-    private lazy var closure: () throws -> Void = {
-//        [self] in
-//        loginDelegate?.checkCredential(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
-        self.navigationController?.pushViewController(MainTabBarController(), animated: true)
+    private lazy var closure: () throws -> Void = { [self] in
+        loginDelegate?.checkCredential(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
     }
     
     
@@ -99,7 +98,7 @@ class LoginViewController: UIViewController {
         addingConstraints()
         button.target = closure
         registrationButton.target = closureForGuessButton
-
+        realmManager.checkCredentials(viewController: self)
     }
     
     func setUserInfo(userInfo: UserService){

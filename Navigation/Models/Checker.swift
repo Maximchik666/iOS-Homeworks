@@ -19,7 +19,10 @@ protocol CheckerServiceProtocol {
 
 class CheckerService: CheckerServiceProtocol, LoginViewControllerDelegate {
     
+    var realmManager = RealmManager()
+    
     func checkCredential(_ sender: LoginViewController, login: String, password: String) {
+        
         Auth.auth().signIn(withEmail: login, password: password) {authResult, error in
             
             guard let user = authResult?.user, error == nil else {
@@ -30,6 +33,7 @@ class CheckerService: CheckerServiceProtocol, LoginViewControllerDelegate {
                 print(error!.localizedDescription)
                 return
             }
+            
             sender.coordinator?.pushToTabBarController(tapBarController: MainTabBarController())
             print("\(user.email!) Has Loged In")
         }
@@ -46,6 +50,8 @@ class CheckerService: CheckerServiceProtocol, LoginViewControllerDelegate {
                 print(error!.localizedDescription)
                 return
             }
+            
+            self.realmManager.saveCredentials(login: login, password: password)
             sender.coordinator?.pushToTabBarController(tapBarController: MainTabBarController())
             print("\(user.email!) created")
         }
