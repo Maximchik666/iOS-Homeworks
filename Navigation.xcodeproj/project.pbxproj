@@ -19,12 +19,16 @@
 		9922922B293D351100110E44 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922922A293D351100110E44 /* InputHandler.swift */; };
 		992292522944D44800110E44 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 992292512944D44800110E44 /* KeychainSwift */; };
 		992292542944D46D00110E44 /* FileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992292532944D46D00110E44 /* FileLoginViewController.swift */; };
+		9955D452294648CA00D2AAE1 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 9955D451294648CA00D2AAE1 /* TinyConstraints */; };
 		995ACD9F2902D7990079559A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 995ACD9E2902D7990079559A /* iOSIntPackage */; };
 		995B5B5F28C62A00007F027F /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B5B5E28C62A00007F027F /* ProfileTableHederView.swift */; };
 		995D7DA3290DA620000E31E4 /* SelectedUserSingletone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D7DA2290DA620000E31E4 /* SelectedUserSingletone.swift */; };
 		995D7DA5290EACAC000E31E4 /* PostViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */; };
 		995E133328BE392C006B5B63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E133228BE392C006B5B63 /* LoginViewController.swift */; };
 		996F0C6628CA321400BEB2D1 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F0C6528CA321400BEB2D1 /* PhotoCollectionViewCell.swift */; };
+		997071A429464C7800920BBB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 997071A329464C7800920BBB /* Realm */; };
+		997071A629464C7800920BBB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 997071A529464C7800920BBB /* RealmSwift */; };
+		997071A829464CC300920BBB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997071A729464CC300920BBB /* RealmManager.swift */; };
 		997710C0290D6D79000D84E9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710BF290D6D79000D84E9 /* Coordinator.swift */; };
 		997710C4290D6E4C000D84E9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710C3290D6E4C000D84E9 /* AppCoordinator.swift */; };
 		997710C6290D77B7000D84E9 /* MainTapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710C5290D77B7000D84E9 /* MainTapBarController.swift */; };
@@ -98,6 +102,7 @@
 		995D7DA4290EACAC000E31E4 /* PostViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCoordinator.swift; sourceTree = "<group>"; };
 		995E133228BE392C006B5B63 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		996F0C6528CA321400BEB2D1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		997071A729464CC300920BBB /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		997710BF290D6D79000D84E9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		997710C3290D6E4C000D84E9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		997710C5290D77B7000D84E9 /* MainTapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapBarController.swift; sourceTree = "<group>"; };
@@ -145,8 +150,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				997071A429464C7800920BBB /* Realm in Frameworks */,
 				998C0D4E28F03950009BD0B4 /* StorageService.framework in Frameworks */,
+				997071A629464C7800920BBB /* RealmSwift in Frameworks */,
 				992200B22937B296005F880C /* FirebaseAuth in Frameworks */,
+				9955D452294648CA00D2AAE1 /* TinyConstraints in Frameworks */,
 				992292522944D44800110E44 /* KeychainSwift in Frameworks */,
 				995ACD9F2902D7990079559A /* iOSIntPackage in Frameworks */,
 			);
@@ -235,6 +243,7 @@
 				99FB0AEB292E3B120046534C /* NetworkService.swift */,
 				99B91E9729338F8E00242D64 /* JSONReceiver.swift */,
 				99FB0AED292E3B6F0046534C /* AppConfiguration.swift */,
+				997071A729464CC300920BBB /* RealmManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -371,6 +380,9 @@
 				995ACD9E2902D7990079559A /* iOSIntPackage */,
 				992200B12937B296005F880C /* FirebaseAuth */,
 				992292512944D44800110E44 /* KeychainSwift */,
+				9955D451294648CA00D2AAE1 /* TinyConstraints */,
+				997071A329464C7800920BBB /* Realm */,
+				997071A529464C7800920BBB /* RealmSwift */,
 			);
 			productName = Navigation;
 			productReference = 99E8362628AA26100021FAF0 /* Navigation.app */;
@@ -407,6 +419,8 @@
 				995ACD9D2902D7990079559A /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 				992200B02937B296005F880C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				992292502944D44800110E44 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				9955D450294648CA00D2AAE1 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+				997071A229464C7800920BBB /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 99E8362728AA26100021FAF0 /* Products */;
 			projectDirPath = "";
@@ -481,6 +495,7 @@
 				995D7DA5290EACAC000E31E4 /* PostViewCoordinator.swift in Sources */,
 				995D7DA3290DA620000E31E4 /* SelectedUserSingletone.swift in Sources */,
 				99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */,
+				997071A829464CC300920BBB /* RealmManager.swift in Sources */,
 				997710C4290D6E4C000D84E9 /* AppCoordinator.swift in Sources */,
 				99229229293D2AA400110E44 /* DataModel.swift in Sources */,
 				99BEAD5B28AA48CB00F8A03F /* PostViewController.swift in Sources */,
@@ -811,12 +826,28 @@
 				kind = branch;
 			};
 		};
+		9955D450294648CA00D2AAE1 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		995ACD9D2902D7990079559A /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage";
 			requirement = {
 				branch = imagepublisher;
 				kind = branch;
+			};
+		};
+		997071A229464C7800920BBB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = revision;
+				revision = b442ee3e9caa1abab26fd9b23f060f6f0815ff48;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -832,10 +863,25 @@
 			package = 992292502944D44800110E44 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
 		};
+		9955D451294648CA00D2AAE1 /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9955D450294648CA00D2AAE1 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
 		995ACD9E2902D7990079559A /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 995ACD9D2902D7990079559A /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
+		};
+		997071A329464C7800920BBB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 997071A229464C7800920BBB /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		997071A529464C7800920BBB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 997071A229464C7800920BBB /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
