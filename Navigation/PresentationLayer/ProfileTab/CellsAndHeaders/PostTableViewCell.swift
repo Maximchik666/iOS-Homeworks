@@ -10,6 +10,8 @@ import StorageService
 
 class PostTableViewCell: UITableViewCell {
     
+    private var post: Post?
+    
     private lazy var postLabel: UILabel = {
         let label = UILabel()
         label.text = "1232345"
@@ -67,6 +69,7 @@ class PostTableViewCell: UITableViewCell {
         self.addSubview(postLabel)
         addingViews()
         addConstraints()
+        addTapGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -80,6 +83,20 @@ class PostTableViewCell: UITableViewCell {
         self.addSubview(postText)
         self.addSubview(postLikesLabel)
         self.addSubview(postViewsLabel)
+    }
+    
+    func addTapGesture () {
+        let gestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(savePost))
+        gestureRecogniser.numberOfTapsRequired = 2
+        self.addGestureRecognizer(gestureRecogniser)
+    }
+    
+    @objc func savePost () {
+        if let unwrappedPost = post {
+            CoreDataManager.defaultManager.addPost(author: unwrappedPost.author, likes: Int64(unwrappedPost.likes), views: Int64(unwrappedPost.views), descr: unwrappedPost.description, image: unwrappedPost.image, id: Int64(unwrappedPost.id))
+        } else {
+            print("Post Is Already Saved")
+        }
     }
     
     func addConstraints () {
@@ -115,6 +132,14 @@ class PostTableViewCell: UITableViewCell {
         postText.text = post.description
         postLikesLabel.text = "Likes: \(post.likes)"
         postViewsLabel.text = "Views: \(post.views)"
-        
+        self.post = post
+    }
+    
+    func setupPostFromCoreData(post: PostModel) {
+        postLabel.text = post.author
+        postImage.image = UIImage(named: post.image!)
+        postText.text = post.descr
+        postLikesLabel.text = "Likes: \(post.likes)"
+        postViewsLabel.text = "Views: \(post.views)"
     }
 }

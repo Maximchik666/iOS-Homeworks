@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JSONReceiver.receiveJSON(forConfiguration: .fourth)
         JSONReceiver.receiveJSON(forConfiguration: .fifth)
         
+      //  CoreDataManager.defaultManager.reloadPosts()
+      //  CoreDataManager.defaultManager.deleteAllPosts()
+        
         return true
     }
     
