@@ -115,7 +115,7 @@ class CoreDataManager {
         }
     }
     
-    @discardableResult func getPosts() -> [PostModel] {
+    func getPosts() -> [PostModel] {
         let request = PostModel.fetchRequest()
         do {
             let answer = try persistentContainer.viewContext.fetch(request)
@@ -127,7 +127,7 @@ class CoreDataManager {
         return []
     }
 
-    @discardableResult func getResults(query : String) -> [PostModel]{
+     func getResults(query : String) -> [PostModel]{
         let request = PostModel.fetchRequest()
         request.predicate = NSPredicate(format: "author LIKE %@", query)
         do {
@@ -140,7 +140,4 @@ class CoreDataManager {
         }
         return []
     }
-
-    
-    
 }
