@@ -11,7 +11,7 @@ import CoreData
 class CoreDataManager {
     
     static let defaultManager = CoreDataManager()
-    var posts: [PostModel] = []
+    private init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Navigation")
@@ -20,6 +20,7 @@ class CoreDataManager {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        container.viewContext.automaticallyMergesChangesFromParent = true
         return container
     }()
     
@@ -28,8 +29,6 @@ class CoreDataManager {
         context.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
         return context
     }()
-
-    
     
     func saveContext () {
         let context = persistentContainer.viewContext
@@ -55,13 +54,10 @@ class CoreDataManager {
         }
     }
     
-    
-    init() {
-        reloadPosts()
-    }
-    
     func addPost(author: String, likes: Int64, views: Int64, descr: String, image: String, id: Int64) {
-        if posts.contains(where: { i in i.id == id}) {
+        let fetchRequest = PostModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "author == %@", author)
+        if ((try? backgroundContext.fetch(fetchRequest) )?.first) != nil {
             return
         } else {
             let newPost = PostModel(context: backgroundContext)
@@ -72,55 +68,30 @@ class CoreDataManager {
             newPost.image = image
             newPost.id = id
             saveBackgroundContext()
-            reloadPosts()
-        }
-    }
-    
-    func reloadPosts(){
-        
-        let request = PostModel.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "author", ascending: true)]
-        do {
-            let fetchedPosts = try persistentContainer.viewContext.fetch(request)
-            posts = fetchedPosts
-        } catch {
-            print("error")
-            posts = []
         }
     }
     
     func deleteAllPosts(){
-        let request = PostModel.fetchRequest ()
-        do {
-            let posts = try persistentContainer.viewContext.fetch(request)
-            let context = persistentContainer.viewContext
-            for post in posts {
-                context.delete(post)
-            }
-            saveContext ()
-        } catch {
-            print (error)
+        
+        let fetchRequest = PostModel.fetchRequest()
+        for post in (try? persistentContainer.viewContext.fetch(fetchRequest)) ?? [] {
+            deletePost(post: post)
         }
+        
+    }
+
+    func deletePost (post: PostModel) {
+        persistentContainer.viewContext.delete(post)
+        saveContext()
     }
     
-    func deleteFromFavorite(index : Int){
-        let request = PostModel.fetchRequest()
-        do {
-            let posts = try persistentContainer.viewContext.fetch(request)
-            let context = persistentContainer.viewContext
-            context.delete(posts[index])
-            saveContext()
-        } catch {
-            print(error)
-        }
-    }
+    
     
     func getPosts() -> [PostModel] {
         let request = PostModel.fetchRequest()
         do {
             let answer = try persistentContainer.viewContext.fetch(request)
-            posts = answer
-            return posts
+            return answer
         } catch {
             print(error)
         }
@@ -132,9 +103,7 @@ class CoreDataManager {
         request.predicate = NSPredicate(format: "author LIKE %@", query)
         do {
             let answer = try persistentContainer.viewContext.fetch(request)
-            posts = answer
-            return posts
-            
+            return answer
         } catch {
             print(error)
         }
