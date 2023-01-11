@@ -6,19 +6,33 @@
 //
 
 import UIKit
+import CoreData
 
-class SavedPostsController: UITableViewController {
+class SavedPostsController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var coordinator: SavedPostsTabCoordinator?
+    var searchedPosts: [PostModel]?
+    
+    let fetchResultController: NSFetchedResultsController = {
+        let fetchRequest  = PostModel.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "author", ascending: true)]
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.defaultManager.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        return frc
+    }()
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "CustomCell")
-        tableView.reloadData()
         
         let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
-        let clear = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clear))
-        navigationItem.rightBarButtonItems = [clear, search]
+        let delete = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clear))
+        
+        
+        navigationItem.rightBarButtonItems = [delete, search]
+       
+        fetchResultController.delegate = self
+        try? fetchResultController.performFetch()
     }
     
     
@@ -27,32 +41,51 @@ class SavedPostsController: UITableViewController {
         tableView.reloadData()
     }
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert: tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete: tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .move: tableView.reloadData()
+        case .update: tableView.reloadRows(at: [indexPath!], with: .automatic)
+        @unknown default:
+            print("Error")
+        }
+    }
     
     
     @objc func search() {
         
         showAlertWithTextField(title: "query:", actionHandler:  { text in
             if let result = text {
-                CoreDataManager.defaultManager.getResults(query: result)
+                self.searchedPosts = CoreDataManager.defaultManager.getResults(query: result)
+                self.navigationItem.rightBarButtonItems?.remove(at: 1)
                 self.tableView.reloadData()
             }
         })
     }
     
     @objc func clear() {
-        CoreDataManager.defaultManager.getPosts()
-        tableView.reloadData()
+        
+        if searchedPosts == nil {
+            CoreDataManager.defaultManager.deleteAllPosts()
+            self.tableView.reloadData()
+        } else {
+            searchedPosts = nil
+            let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(search))
+            self.navigationItem.rightBarButtonItems?.append(search)
+            self.tableView.reloadData()
+        }
     }
     
     func showAlertWithTextField(title:String? = nil,
-                         subtitle:String? = nil,
-                         actionTitle:String? = "Search",
-                         cancelTitle:String? = "Cancel",
-                         inputPlaceholder:String? = nil,
-                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
-                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
-                         actionHandler: ((_ text: String?) -> Void)? = nil) {
-
+                                subtitle:String? = nil,
+                                actionTitle:String? = "Search",
+                                cancelTitle:String? = "Cancel",
+                                inputPlaceholder:String? = nil,
+                                inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
+                                cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                                actionHandler: ((_ text: String?) -> Void)? = nil) {
+        
         let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
         alert.addTextField { (textField:UITextField) in
             textField.placeholder = inputPlaceholder
@@ -66,7 +99,7 @@ class SavedPostsController: UITableViewController {
             actionHandler?(textField.text)
         }))
         alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
-
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -78,14 +111,24 @@ class SavedPostsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return CoreDataManager.defaultManager.posts.count
+        if searchedPosts == nil {
+            return fetchResultController.sections?[section].numberOfObjects ?? 0
+        } else {
+            return searchedPosts!.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! PostTableViewCell
-        cell.setupPostFromCoreData(post: CoreDataManager.defaultManager.posts[indexPath.row])
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! PostTableViewCell
+        if searchedPosts == nil {
+            let post = fetchResultController.object(at: indexPath)
+            cell.setupPostFromCoreData(post: post)
+            return cell
+        } else {
+            let post = searchedPosts![indexPath.row]
+            cell.setupPostFromCoreData(post: post)
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -93,12 +136,16 @@ class SavedPostsController: UITableViewController {
             makeDeleteContextualAction(forRowAt: indexPath)
         ])
     }
-
+    
     private func makeDeleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
         return UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
-            CoreDataManager.defaultManager.deleteFromFavorite(index: indexPath.row)
-            CoreDataManager.defaultManager.getPosts()
-            self.tableView.reloadData()
+            if self.searchedPosts == nil {
+                let post = self.fetchResultController.object(at: indexPath)
+                CoreDataManager.defaultManager.deletePost(post: post)
+            } else {
+                self.searchedPosts?.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
             completion(true)
         }
     }
