@@ -11,7 +11,7 @@ class LoginViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
     
-    var realmManager = RealmManager()
+    var realmManager = RealmManager.defaultManager
     var userInfo: UserService?
     var loginDelegate: LoginViewControllerDelegate?
     
