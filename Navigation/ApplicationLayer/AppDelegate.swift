@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        RealmManager.defaultManager.configRealm()
+        
         FirebaseApp.configure()
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
