@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        RealmManager.defaultManager.configRealm()
+        
         FirebaseApp.configure()
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
@@ -35,9 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let currentConfiguration = appConfiguration {
             NetworkService.request(forConfiguration: currentConfiguration)
         } else {print ("Something Went Wrong((((")}
-        
-        JSONReceiver.receiveJSON(forConfiguration: .fourth)
-        JSONReceiver.receiveJSON(forConfiguration: .fifth)
+//        
+//        JSONReceiver.receiveJSON(forConfiguration: .fourth)
+//        JSONReceiver.receiveJSON(forConfiguration: .fifth)
         
       //  CoreDataManager.defaultManager.reloadPosts()
       //  CoreDataManager.defaultManager.deleteAllPosts()

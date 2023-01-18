@@ -19,7 +19,7 @@ protocol CheckerServiceProtocol {
 
 class CheckerService: CheckerServiceProtocol, LoginViewControllerDelegate {
     
-    var realmManager = RealmManager()
+    var realmManager = RealmManager.defaultManager
     
     func checkCredential(_ sender: LoginViewController, login: String, password: String) {
         

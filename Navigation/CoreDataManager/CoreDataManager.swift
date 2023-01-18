@@ -54,6 +54,19 @@ class CoreDataManager {
         }
     }
     
+    func addKey () {
+        let fetchRequest = RealmKey.fetchRequest()
+        if ((try? persistentContainer.viewContext.fetch(fetchRequest))?.first) == nil {
+            let realmKey = RealmKey(context: persistentContainer.viewContext)
+            realmKey.key = Data(count: 64)
+            saveContext()
+            print ("GO GO GO GO GO GO")
+        } else {
+            print ("NO NO NO NO NO NO")
+            return
+        }
+    }
+    
     func addPost(author: String, likes: Int64, views: Int64, descr: String, image: String, id: Int64) {
         let fetchRequest = PostModel.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "author == %@", author)
