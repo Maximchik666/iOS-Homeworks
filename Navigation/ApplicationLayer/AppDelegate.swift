@@ -6,15 +6,21 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
+    var appConfiguration: AppConfiguration?
     var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        RealmManager.defaultManager.configRealm()
+        
+        FirebaseApp.configure()
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
@@ -26,8 +32,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator.init(navigationController: navigationController)
         appCoordinator?.start()
         
-        return true
+        appConfiguration = AppConfiguration.allCases.randomElement()
         
+        if let currentConfiguration = appConfiguration {
+            NetworkService.request(forConfiguration: currentConfiguration)
+        } else {print ("Something Went Wrong((((")}
+//        
+//        JSONReceiver.receiveJSON(forConfiguration: .fourth)
+//        JSONReceiver.receiveJSON(forConfiguration: .fifth)
+        
+      //  CoreDataManager.defaultManager.reloadPosts()
+      //  CoreDataManager.defaultManager.deleteAllPosts()
+        
+        return true
     }
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        do {
+            try Auth.auth().signOut()
+        } catch {print("Some Error")}
+    }
 }

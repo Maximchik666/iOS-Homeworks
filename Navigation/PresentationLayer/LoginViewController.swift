@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
     
+    var realmManager = RealmManager.defaultManager
     var userInfo: UserService?
     var loginDelegate: LoginViewControllerDelegate?
     
@@ -33,7 +34,8 @@ class LoginViewController: UIViewController {
         
         let loginTextField = TextFieldWithPadding()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginTextField.placeholder = "Email or Phone Number"
+        loginTextField.placeholder = "Please Enter Your Email"
+        loginTextField.keyboardType = .emailAddress
         loginTextField.clearButtonMode = .whileEditing
         return loginTextField
     }()
@@ -76,43 +78,14 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var button = CustomButton(title: "Log In")
-    private lazy var closure: () throws -> Void = {
-       
-        do {
-            try self.checkAccess(self.loginTextField.text!, self.passwordTextField.text!)
-            let viewController = MainTabBarController()
-            if let user = self.userInfo?.autorization(login: self.loginTextField.text ?? ""){
-                SelectedUser.shared.user = user
-                self.coordinator?.pushToTabBarController(tapBarController: viewController)
-            }
-        }
-        
-        catch AppErrors.userIsNotFound {
-            let alertController = UIAlertController(title: "Sorry!", message: "Wrong Login Or Password!", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
-            }))
-            self.present(alertController, animated: true, completion: nil)
-        }
-        catch {
-            let alertController = UIAlertController(title: "Sorry!", message: "Something Unknown is Happend", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
-            }))
-            self.present(alertController, animated: true, completion: nil)
-        }
+    private lazy var closure: () throws -> Void = { [self] in
+        loginDelegate?.checkCredential(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
     }
     
     
-    private lazy var guessPassword = CustomButton(title: "Guess Password")
-    private lazy var closureForGuessButton: () -> Void = {
-        
-        self.passwordTextField.text = Checker.shared.password
-        self.guessPassword.isEnabled = false
-        self.guessPassword.backgroundColor = .systemGray
-        self.activityIndicator.startAnimating()
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.bruteForce(passwordToUnlock: Checker.shared.password)
-        }
+    private lazy var registrationButton = CustomButton(title: "Create A User")
+    private lazy var closureForGuessButton: () -> Void = { [self] in
+        loginDelegate?.signUp(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
     }
     
     
@@ -124,13 +97,8 @@ class LoginViewController: UIViewController {
         addingViews()
         addingConstraints()
         button.target = closure
-        guessPassword.target = closureForGuessButton
-    }
-    
-    func checkAccess(_ login : String, _ password : String) throws {
-        if !(self.loginDelegate?.check(self, login: login, password: password))! {
-            throw AppErrors.userIsNotFound
-        }
+        registrationButton.target = closureForGuessButton
+        realmManager.checkCredentials(viewController: self)
     }
     
     func setUserInfo(userInfo: UserService){
@@ -195,27 +163,8 @@ class LoginViewController: UIViewController {
         credentialsStackView.addArrangedSubview(passwordTextField)
         scrollView.addSubview(credentialsStackView)
         scrollView.addSubview(button)
-        scrollView.addSubview(guessPassword)
+        scrollView.addSubview(registrationButton)
         scrollView.addSubview(activityIndicator)
-    }
-    
-    func bruteForce(passwordToUnlock: String) {
-        let ALLOWED_CHARACTERS:   [String] = String().printable.map { String($0) }
-        
-        var password: String = ""
-        
-        while password != passwordToUnlock {
-            password = generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
-        }
-        
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
-            self.passwordTextField.isSecureTextEntry = false
-            self.passwordTextField.text = password
-            self.guessPassword.isEnabled = true
-            self.guessPassword.backgroundColor = UIColor(named: "VKColor")!
-        }
     }
     
     func addingConstraints () {
@@ -244,10 +193,10 @@ class LoginViewController: UIViewController {
             button.topAnchor.constraint(equalTo: credentialsStackView.bottomAnchor, constant: 16),
             button.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16),
             
-            guessPassword.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 16),
-            guessPassword.heightAnchor.constraint(equalToConstant: 50),
-            guessPassword.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
-            guessPassword.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16),
+            registrationButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 16),
+            registrationButton.heightAnchor.constraint(equalToConstant: 50),
+            registrationButton.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
+            registrationButton.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16),
             
             activityIndicator.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
             activityIndicator.rightAnchor.constraint(equalTo: passwordTextField.rightAnchor, constant: -16),

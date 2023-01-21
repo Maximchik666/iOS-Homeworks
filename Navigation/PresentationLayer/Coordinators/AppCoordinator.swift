@@ -30,7 +30,6 @@ class AppCoordinator: Coordinator {
         
         vc.setUserInfo(userInfo: userInfo)
         vc.loginDelegate = MyLoginFactory().makeLoginInspector()
-    //    vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
