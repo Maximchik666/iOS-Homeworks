@@ -15,6 +15,7 @@ class MainTabBarController: UITabBarController {
     let media = MediaTabCoordinator(navigationController: UINavigationController())
     let file = FileTabCoordinator(navigationController: UINavigationController())
     let savedPosts = SavedPostsTabCoordinator(navigationController: UINavigationController())
+    let map = MapTabCoordinator(navigationController: UINavigationController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +25,10 @@ class MainTabBarController: UITabBarController {
         media.start()
         file.start()
         savedPosts.start()
+        map.start()
         
         UITabBar.appearance().backgroundColor = .systemBackground
         UITabBar.appearance().tintColor = UIColor(named: "VKColour")
-        viewControllers = [feed.navigationController, file.navigationController, media.navigationController, profile.navigationController, savedPosts.navigationController]
+        viewControllers = [feed.navigationController, file.navigationController, media.navigationController, map.navigationController, profile.navigationController, savedPosts.navigationController]
     }
 }
