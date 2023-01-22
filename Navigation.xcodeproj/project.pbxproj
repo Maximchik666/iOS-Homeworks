@@ -766,6 +766,9 @@
 				DEVELOPMENT_TEAM = K424BZ7XRC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = ert;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = sfsdfsd;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = rgdg;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -797,6 +800,9 @@
 				DEVELOPMENT_TEAM = K424BZ7XRC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = ert;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = sfsdfsd;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = rgdg;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
