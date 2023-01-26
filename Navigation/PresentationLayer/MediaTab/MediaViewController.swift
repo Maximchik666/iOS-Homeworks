@@ -168,6 +168,6 @@ class MediaViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Your Media"
+        self.navigationItem.title = String(localized: "YourMedia")
     }
 }

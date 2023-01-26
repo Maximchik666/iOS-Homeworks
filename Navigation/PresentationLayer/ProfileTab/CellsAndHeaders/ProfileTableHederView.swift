@@ -16,7 +16,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: UI Elements Creation
     
-    private lazy var statusButton = CustomButton(title: "Show Status")
+    private lazy var statusButton = CustomButton(title: String(localized: "ShowStatus"))
     private lazy var closure: () -> Void = {
         
         self.changeStatus(newStatus: self.textField.text ?? "") { result in
@@ -25,7 +25,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
                 self.statusLabel.text = status
                 
             case .failure:
-                self.statusLabel.text  = "Put Some Words In It First!"
+                self.statusLabel.text  = String(localized: "PutSomeWordsInItFirst")
             }
         }
     }
@@ -62,7 +62,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private lazy var textField : TextFieldWithPadding = {
         let textField = TextFieldWithPadding()
-        textField.placeholder = "Enter text here"
+        textField.placeholder = String(localized: "EnterTextHere")
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1

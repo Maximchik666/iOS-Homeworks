@@ -19,10 +19,10 @@ class AppCoordinator: Coordinator {
     func start() {
         
 #if DEBUG
-        let userInfo = TestUserService(user: User(login: "", fullName: "Vasiliy Tyorkin", avatar: UIImage(named: "Ava1")!, status: "Kickin'"))
+        let userInfo = TestUserService(user: User(login: "", fullName: String(localized: "ProfileNameDebug"), avatar: UIImage(named: "Ava1")!, status: String(localized: "StatusDebug")))
         SelectedUser.shared.user = userInfo.user
 #else
-        let userInfo = CurrentUserService(user:User(login: "", fullName: "Admin Adminov", avatar: UIImage(named: "Ava2")!, status: "Strugglin'") )
+        let userInfo = CurrentUserService(user:User(login: "", fullName: String(localized: "ProfileNameRelease"), avatar: UIImage(named: "Ava2")!, status: String(localized: "StatusRelease")) )
         SelectedUser.shared.user = userInfo.user
 #endif
         

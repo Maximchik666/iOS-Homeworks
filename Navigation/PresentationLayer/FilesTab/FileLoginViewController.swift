@@ -19,7 +19,7 @@ class FileLoginViewController: UIViewController {
         
         let passwordTextField = TextFieldWithPadding()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "CreatePassword"
+        passwordTextField.placeholder = String(localized: "CreatePassword")
         passwordTextField.isSecureTextEntry = true
         passwordTextField.clearButtonMode = .whileEditing
         passwordTextField.layer.borderWidth = 3
@@ -37,13 +37,12 @@ class FileLoginViewController: UIViewController {
             if self.temporaryPassword == "" {
                 self.temporaryPassword = (self.passwordTextField.text)!
                 self.passwordTextField.text = ""
-                self.passwordTextField.placeholder = "Re-Enter Password"
+                self.passwordTextField.placeholder = String(localized: "ReEnterPassword")
             } else {
                 if self.temporaryPassword == (self.passwordTextField.text)! {
                     KeychainSwift().set(self.temporaryPassword, forKey: "Password")
                     self.passwordTextField.text = ""
-                    self.passwordTextField.placeholder = "Enter Password"
-                    
+                    self.passwordTextField.placeholder = String(localized: "EnterPassword")
                     if self.modalAppearance == false {
                         self.coordinator?.pushToFilesTab(filesViewController: FileViewController())
                     } else {
@@ -54,7 +53,7 @@ class FileLoginViewController: UIViewController {
                     alertController.addAction(UIAlertAction(title: "Ok! Let me Try Again", style: .default, handler: { _ in
                         self.temporaryPassword = KeychainSwift().get("Password") ?? ""
                         self.passwordTextField.text = ""
-                        self.passwordTextField.placeholder = "Enter Password"
+                        self.passwordTextField.placeholder = String(localized: "EnterPassword")
                     }))
                     self.present(alertController, animated: true, completion: nil)
                 }

@@ -130,8 +130,8 @@ class PostTableViewCell: UITableViewCell {
         postLabel.text = post.author
         postImage.image = UIImage(named: post.image)
         postText.text = post.description
-        postLikesLabel.text = "Likes: \(post.likes)"
-        postViewsLabel.text = "Views: \(post.views)"
+        postLikesLabel.text = String(localized: "Likes") + " " + "\(post.likes)"
+        postViewsLabel.text = String(localized: "Views") + " " + "\(post.views)"
         self.post = post
     }
     
@@ -139,7 +139,7 @@ class PostTableViewCell: UITableViewCell {
         postLabel.text = post.author
         postImage.image = UIImage(named: post.image!)
         postText.text = post.descr
-        postLikesLabel.text = "Likes: \(post.likes)"
-        postViewsLabel.text = "Views: \(post.views)"
+        postLikesLabel.text = String(localized: "Likes") + " " + "\(post.likes)"
+        postViewsLabel.text = String(localized: "Views") + " " + "\(post.views)"
     }
 }
