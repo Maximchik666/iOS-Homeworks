@@ -18,7 +18,7 @@ class PhotosTableViewCell: UITableViewCell {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.text = "Photos"
+        label.text = String(localized: "Photos")
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0

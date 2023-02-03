@@ -18,9 +18,9 @@ public struct Post {
     public var id: Int
 }
 
-var post1 = Post(author: "DTF", description: "Илон Маск в серии коротких твитов раскритиковал «Кольца власти», написав, что «Толкин переворачивается в своём гробу». Миллиардер назвал почти всех героев мужского пола «трусами и придурками», а Галадриэль, по его мнению, единственный интересный персонаж сериала.", image: "IMG-1", likes: 350, views: 1000, id: 1)
-var post2 = Post(author: "KinoPoisk", description: "Вышедший в 2021 году на Netflix мультсериал «Аркейн» стал первым стриминг-проектом, получившим премию «Эмми» в категории «Лучшая анимационная программа» на Creative Arts Emmy Awards.Проект от Netflix оставил позади «Симпсонов», «Рика и Морти», «Закусочную Боба» и мультсериал от Marvel «Что, если..?». Последний не остался без наград: «Эмми» за лучшее закадровое озвучание персонажа посмертно получил Чедвик Боузман, подаривший свой голос Т’Чалле.Премию вручают за технические достижения на американском телевидении. Основная церемония награждения «Эмми» пройдет 13 сентября.", image: "IMG-2", likes: 450, views: 1300, id: 2)
-var post3 = Post(author: "Кроненберг Нефильтрованный", description: "Хоррор дня: как сейчас выглядит одна из аниматронных кукол инопланетянина из знаменитого фильма Стивена Спилберга. «Инопланетянину» в этом году исполнилось 40 лет.", image: "IMG-3", likes: 300, views: 700, id: 3)
+var post1 = Post(author: String(localized: "postDtfName"), description: String(localized: "postDtfText"), image: "IMG-1", likes: 350, views: 1000, id: 1)
+var post2 = Post(author: String(localized: "postKinopoiskName"), description: String(localized: "postKinopoiskText"), image: "IMG-2", likes: 450, views: 1300, id: 2)
+var post3 = Post(author: String(localized: "postKronenbergName"), description: String(localized: "postKronenbergText"), image: "IMG-3", likes: 300, views: 700, id: 3)
 
 public var viewModel = [post1, post2, post3]
 

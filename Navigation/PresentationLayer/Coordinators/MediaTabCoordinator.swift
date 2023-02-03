@@ -21,7 +21,7 @@ class MediaTabCoordinator: Coordinator {
     func start() {
         let vc = MediaViewController()
         
-        vc.tabBarItem = UITabBarItem(title: "Media", image: UIImage(systemName: "music.note"), tag: 2)
+        vc.tabBarItem = UITabBarItem(title: String(localized: "TabBarMedia"), image: UIImage(systemName: "music.note"), tag: 2)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

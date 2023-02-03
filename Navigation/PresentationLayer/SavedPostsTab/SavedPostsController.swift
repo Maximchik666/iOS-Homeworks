@@ -79,8 +79,8 @@ class SavedPostsController: UITableViewController, NSFetchedResultsControllerDel
     
     func showAlertWithTextField(title:String? = nil,
                                 subtitle:String? = nil,
-                                actionTitle:String? = "Search",
-                                cancelTitle:String? = "Cancel",
+                                actionTitle:String? = String(localized: "Search"),
+                                cancelTitle:String? = String(localized: "Cancel"),
                                 inputPlaceholder:String? = nil,
                                 inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
                                 cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
@@ -138,7 +138,7 @@ class SavedPostsController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     private func makeDeleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
-        return UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
+        return UIContextualAction(style: .destructive, title: String(localized: "Delete")) { (action, swipeButtonView, completion) in
             if self.searchedPosts == nil {
                 let post = self.fetchResultController.object(at: indexPath)
                 CoreDataManager.defaultManager.deletePost(post: post)

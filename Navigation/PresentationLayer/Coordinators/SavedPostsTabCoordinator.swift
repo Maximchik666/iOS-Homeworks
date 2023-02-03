@@ -21,7 +21,7 @@ class SavedPostsTabCoordinator: Coordinator {
     func start() {
         let vc = SavedPostsController()
         
-        vc.tabBarItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "heart.rectangle.fill"), tag: 4)
+        vc.tabBarItem = UITabBarItem(title: String(localized: "TabBarSaved"), image: UIImage(systemName: "heart.rectangle.fill"), tag: 4)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

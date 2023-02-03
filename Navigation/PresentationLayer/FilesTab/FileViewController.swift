@@ -69,10 +69,10 @@ class FileViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func navBarSetup () {
         if #available(iOS 16.0, *) {
             
-            let createFolderButton = UIBarButtonItem(title: "Create Folder", image: UIImage(systemName: "folder.fill.badge.plus"), target: self, action: #selector(createFolder))
+            let createFolderButton = UIBarButtonItem(title: String(localized:"Create Folder"), image: UIImage(systemName: "folder.fill.badge.plus"), target: self, action: #selector(createFolder))
             let addPhotoButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addPhoto))
-            let changePasswordButton = UIBarButtonItem(title: "Change Password", image: UIImage(systemName: "lock"), target: self, action: #selector(changePassword))
-            let sortItemsButton = UIBarButtonItem(title: "Sore Items", image: UIImage(systemName: "arrow.up.and.down.text.horizontal"), target: self, action: #selector(sortItems))
+            let changePasswordButton = UIBarButtonItem(title: String(localized: "Change Password"), image: UIImage(systemName: "lock"), target: self, action: #selector(changePassword))
+            let sortItemsButton = UIBarButtonItem(title: String(localized: "Sort Items"), image: UIImage(systemName: "arrow.up.and.down.text.horizontal"), target: self, action: #selector(sortItems))
             
             let group = UIBarButtonItemGroup(barButtonItems: [createFolderButton, addPhotoButton,changePasswordButton,sortItemsButton], representativeItem: nil)
             

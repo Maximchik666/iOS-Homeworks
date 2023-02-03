@@ -20,7 +20,7 @@ class MapTabCoordinator: Coordinator {
     
     func start() {
         let vc = MapViewController()
-        vc.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 5)
+        vc.tabBarItem = UITabBarItem(title: String(localized: "TabBarMap"), image: UIImage(systemName: "map"), tag: 5)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

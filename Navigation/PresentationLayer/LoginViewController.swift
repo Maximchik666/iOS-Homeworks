@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         
         let loginTextField = TextFieldWithPadding()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginTextField.placeholder = "Please Enter Your Email"
+        loginTextField.placeholder = String(localized: "EnterEmail")
         loginTextField.keyboardType = .emailAddress
         loginTextField.clearButtonMode = .whileEditing
         return loginTextField
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
         
         let passwordTextField = TextFieldWithPadding()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Enter Password"
+        passwordTextField.placeholder = String(localized: "EnterPassword")
         passwordTextField.isSecureTextEntry = true
         passwordTextField.clearButtonMode = .whileEditing
         return passwordTextField
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    private lazy var registrationButton = CustomButton(title: "Create A User")
+    private lazy var registrationButton = CustomButton(title: String(localized: "CreateUser"))
     private lazy var closureForGuessButton: () -> Void = { [self] in
         loginDelegate?.signUp(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
     }

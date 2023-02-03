@@ -20,7 +20,7 @@ class FileTabCoordinator: Coordinator {
     
     func start() {
         let vc = FileLoginViewController()
-        vc.tabBarItem = UITabBarItem(title: "Files", image: UIImage(systemName: "filemenu.and.cursorarrow"), tag: 3)
+        vc.tabBarItem = UITabBarItem(title: String(localized: "TabBarFiles"), image: UIImage(systemName: "filemenu.and.cursorarrow"), tag: 3)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

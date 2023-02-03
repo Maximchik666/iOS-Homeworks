@@ -20,7 +20,7 @@ class ProfileTabCoordinator: Coordinator {
     func start() {
         let vc = ProfileViewController()
         
-        vc.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
+        vc.tabBarItem = UITabBarItem(title: String(localized: "TabBarProfile"), image: UIImage(systemName: "person"), tag: 1)
         vc.coordinator = self
         vc.user = SelectedUser.shared.user
         navigationController.pushViewController(vc, animated: true)

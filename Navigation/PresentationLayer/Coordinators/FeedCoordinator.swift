@@ -19,7 +19,7 @@ class FeedCoordinator: Coordinator {
     func start() {
         
         let vc = FeedViewController()
-        vc.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "message"), tag: 0)
+        vc.tabBarItem = UITabBarItem(title: String(localized: "TabBarFeed"), image: UIImage(systemName: "message"), tag: 0)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
