@@ -58,6 +58,7 @@
 		99E8363328AA26110021FAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8363228AA26110021FAF0 /* Assets.xcassets */; };
 		99E8363628AA26110021FAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E8363428AA26110021FAF0 /* LaunchScreen.storyboard */; };
 		99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */; };
+		99EAB894298D7547004599F1 /* ColorSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAB893298D7547004599F1 /* ColorSwitcher.swift */; };
 		99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AD7292BBB430046534C /* AppErrors.swift */; };
 		99FB0ADB292CEED80046534C /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADA292CEED80046534C /* MediaViewController.swift */; };
 		99FB0ADD292CF0B10046534C /* MediaTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */; };
@@ -142,6 +143,7 @@
 		99E8363528AA26110021FAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99E8363728AA26110021FAF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		99EAB893298D7547004599F1 /* ColorSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwitcher.swift; sourceTree = "<group>"; };
 		99FB0AD7292BBB430046534C /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		99FB0ADA292CEED80046534C /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTabCoordinator.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				99FB0AD7292BBB430046534C /* AppErrors.swift */,
+				99EAB893298D7547004599F1 /* ColorSwitcher.swift */,
 				998B16D428FAE36400DE194C /* UserInfo.swift */,
 				998B16D628FDB93800DE194C /* Checker.swift */,
 				99FB0AE9292D0C360046534C /* CustomUIElements.swift */,
@@ -520,6 +523,7 @@
 				992292542944D46D00110E44 /* FileLoginViewController.swift in Sources */,
 				997710CA290D7CEF000D84E9 /* ProfileTabCoordinator.swift in Sources */,
 				996F0C6628CA321400BEB2D1 /* PhotoCollectionViewCell.swift in Sources */,
+				99EAB894298D7547004599F1 /* ColorSwitcher.swift in Sources */,
 				998B16D728FDB93800DE194C /* Checker.swift in Sources */,
 				990F39B228CA18060037D08A /* PhotosTableViewCell.swift in Sources */,
 				99D5B8662951E2C000447186 /* CoreDataManager.swift in Sources */,
