@@ -16,7 +16,7 @@ class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "1232345"
         label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
+        label.textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         return label
@@ -36,7 +36,7 @@ class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "350 Likes"
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .black
+        label.textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         return label
@@ -46,7 +46,7 @@ class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "350 Likes"
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .black
+        label.textColor = UIColor.createColor(lightMode: .black, darkMode: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         return label

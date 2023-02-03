@@ -68,7 +68,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         
 #if DEBUG
-        view.backgroundColor = .systemGray
+        view.backgroundColor = UIColor.createColor(lightMode: .systemGray, darkMode: .systemGray2)
 #else
         view.backgroundColor = .blue
 #endif
@@ -97,7 +97,7 @@ class FeedViewController: UIViewController {
     
     func navBarCustomization () {
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(named: "LightGray")
+        appearance.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .systemGray5)
         appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")!]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")!]
         navigationController?.navigationBar.tintColor = UIColor(named: "VKColor")
