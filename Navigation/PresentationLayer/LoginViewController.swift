@@ -91,7 +91,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .systemGray5)
         self.setupGestures()
         navigationController?.navigationBar.isHidden = true
         addingViews()
