@@ -12,6 +12,7 @@ var postTitle = "Your New Post"
 class FeedViewController: UIViewController {
     
     weak var coordinator: FeedCoordinator?
+    private var checkResult = false
     
     // MARK: UI Elements Creation
     
@@ -49,15 +50,20 @@ class FeedViewController: UIViewController {
     }
    
     private lazy var closureForCheckGuessButton = {
-        var inputWord  = ""
+        var inputWord  = "Green"
+        
         if  let i = self.gameTextField.text {
-            inputWord = i
+            if inputWord == i {
+                self.checkResult = true
+            } else {
+                self.checkResult = false
+            }
         }
-        var checkResult = true // Убрал функционал
-        if checkResult {
+        
+        if self.checkResult {
             self.checkLabel.backgroundColor = .systemGreen
         } else {
-          //  self.checkLabel.backgroundColor = .systemRed
+            self.checkLabel.backgroundColor = .systemRed
         }
     }
     
