@@ -11,6 +11,7 @@ class AppCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    var isBeingPushedToNextScreen = false
     
     init (navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -35,6 +36,7 @@ class AppCoordinator: Coordinator {
     }
  
     func pushToTabBarController (tapBarController : MainTabBarController ){
+        isBeingPushedToNextScreen = true
         navigationController.pushViewController(tapBarController, animated: true)
     }
     
