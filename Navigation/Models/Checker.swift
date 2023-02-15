@@ -51,7 +51,7 @@ class CheckerService: CheckerServiceProtocol, LoginViewControllerDelegate {
                 return
             }
             
-            self.realmManager.saveCredentials(login: login, password: password)
+           // self.realmManager.saveCredentials(login: login, password: password)
             sender.coordinator?.pushToTabBarController(tapBarController: MainTabBarController())
             print("\(user.email!) created")
         }

@@ -31,6 +31,7 @@
 		997071A429464C7800920BBB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 997071A329464C7800920BBB /* Realm */; };
 		997071A629464C7800920BBB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 997071A529464C7800920BBB /* RealmSwift */; };
 		997071A829464CC300920BBB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997071A729464CC300920BBB /* RealmManager.swift */; };
+		9973B693299D418C00422ED2 /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973B692299D418C00422ED2 /* LocalAuthorizationService.swift */; };
 		997710C0290D6D79000D84E9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710BF290D6D79000D84E9 /* Coordinator.swift */; };
 		997710C4290D6E4C000D84E9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710C3290D6E4C000D84E9 /* AppCoordinator.swift */; };
 		997710C6290D77B7000D84E9 /* MainTapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997710C5290D77B7000D84E9 /* MainTapBarController.swift */; };
@@ -123,6 +124,7 @@
 		995E133228BE392C006B5B63 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		996F0C6528CA321400BEB2D1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		997071A729464CC300920BBB /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		9973B692299D418C00422ED2 /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		997710BF290D6D79000D84E9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		997710C3290D6E4C000D84E9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		997710C5290D77B7000D84E9 /* MainTapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTapBarController.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				99B91E9729338F8E00242D64 /* JSONReceiver.swift */,
 				99FB0AED292E3B6F0046534C /* AppConfiguration.swift */,
 				997071A729464CC300920BBB /* RealmManager.swift */,
+				9973B692299D418C00422ED2 /* LocalAuthorizationService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				99DE41DE297C4F1400DAF428 /* MapViewController.swift in Sources */,
 				995D7DA5290EACAC000E31E4 /* PostViewCoordinator.swift in Sources */,
 				995D7DA3290DA620000E31E4 /* SelectedUserSingletone.swift in Sources */,
+				9973B693299D418C00422ED2 /* LocalAuthorizationService.swift in Sources */,
 				99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */,
 				997071A829464CC300920BBB /* RealmManager.swift in Sources */,
 				997710C4290D6E4C000D84E9 /* AppCoordinator.swift in Sources */,
@@ -861,6 +865,7 @@
 				DEVELOPMENT_TEAM = K424BZ7XRC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Предоставьте лицо!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = ert;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = sfsdfsd;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = rgdg;
@@ -895,6 +900,7 @@
 				DEVELOPMENT_TEAM = K424BZ7XRC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Предоставьте лицо!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = ert;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = sfsdfsd;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = rgdg;

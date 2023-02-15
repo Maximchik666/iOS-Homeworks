@@ -86,7 +86,7 @@ class RealmManager {
         var credentials: [Credentials] = []
         
         func reloadData() {
-            credentials = Array(self.realm.objects(Credentials.self))
+       //     credentials = Array(self.realm.objects(Credentials.self))
         }
         
         func saveCredentials (login: String, password: String) {
