@@ -60,7 +60,6 @@
 		99E8363628AA26110021FAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E8363428AA26110021FAF0 /* LaunchScreen.storyboard */; };
 		99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */; };
 		99EAB894298D7547004599F1 /* ColorSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAB893298D7547004599F1 /* ColorSwitcher.swift */; };
-		99F97FFA299BB172005FC68E /* NavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F97FF9299BB172005FC68E /* NavigationTests.swift */; };
 		99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AD7292BBB430046534C /* AppErrors.swift */; };
 		99FB0ADB292CEED80046534C /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADA292CEED80046534C /* MediaViewController.swift */; };
 		99FB0ADD292CF0B10046534C /* MediaTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */; };
@@ -155,7 +154,6 @@
 		99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		99EAB893298D7547004599F1 /* ColorSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwitcher.swift; sourceTree = "<group>"; };
 		99F97FF7299BB172005FC68E /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		99F97FF9299BB172005FC68E /* NavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTests.swift; sourceTree = "<group>"; };
 		99FB0AD7292BBB430046534C /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		99FB0ADA292CEED80046534C /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTabCoordinator.swift; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 		99F97FF8299BB172005FC68E /* NavigationTests */ = {
 			isa = PBXGroup;
 			children = (
-				99F97FF9299BB172005FC68E /* NavigationTests.swift */,
 			);
 			path = NavigationTests;
 			sourceTree = "<group>";
@@ -627,7 +624,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99F97FFA299BB172005FC68E /* NavigationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
