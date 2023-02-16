@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     weak var coordinator: AppCoordinator?
+    var authorizationService = LocalAuthorizationService()
     
     var realmManager = RealmManager.defaultManager
     var userInfo: UserService?
@@ -34,7 +35,7 @@ class LoginViewController: UIViewController {
         
         let loginTextField = TextFieldWithPadding()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginTextField.placeholder = "Please Enter Your Email"
+        loginTextField.placeholder = String(localized: "EnterEmail")
         loginTextField.keyboardType = .emailAddress
         loginTextField.clearButtonMode = .whileEditing
         return loginTextField
@@ -52,7 +53,7 @@ class LoginViewController: UIViewController {
         
         let passwordTextField = TextFieldWithPadding()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "Enter Password"
+        passwordTextField.placeholder = String(localized: "EnterPassword")
         passwordTextField.isSecureTextEntry = true
         passwordTextField.clearButtonMode = .whileEditing
         return passwordTextField
@@ -83,21 +84,40 @@ class LoginViewController: UIViewController {
     }
     
     
-    private lazy var registrationButton = CustomButton(title: "Create A User")
+    private lazy var registrationButton = CustomButton(title: String(localized: "CreateUser"))
     private lazy var closureForGuessButton: () -> Void = { [self] in
         loginDelegate?.signUp(self, login: self.loginTextField.text!, password: self.passwordTextField.text!)
+    }
+    
+    private lazy var faceIdButton = CustomButton(title: "Authorization")
+    private lazy var closureForFaceIdButton: () -> Void = { [self] in
+        evaluateAutorization()
+        authorizationService.authorizeIfPossible { status, error in
+            DispatchQueue.main.async {
+                if status {
+                    self.coordinator?.pushToTabBarController(tapBarController: MainTabBarController())
+                } else {
+                    self.alert(
+                        title: "Error",
+                        message: error?.localizedDescription ?? "Face ID/Touch ID may not be configured",
+                        okActionTitle: "Ok!")
+                    
+                }
+            }
+        }
     }
     
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .systemGray5)
         self.setupGestures()
         navigationController?.navigationBar.isHidden = true
         addingViews()
         addingConstraints()
         button.target = closure
         registrationButton.target = closureForGuessButton
+        faceIdButton.target = closureForFaceIdButton
         realmManager.checkCredentials(viewController: self)
     }
     
@@ -108,6 +128,8 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        evaluateAutorization()
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.didShowKeyboard(_:)),
@@ -165,6 +187,47 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(button)
         scrollView.addSubview(registrationButton)
         scrollView.addSubview(activityIndicator)
+        scrollView.addSubview(faceIdButton)
+    }
+    
+    func evaluateAutorization() {
+        
+        var biometryType = authorizationService.biometryTipeClarification()
+        
+        if biometryType == .none{
+            self.alert(
+                title: "Error",
+                message: "Face ID/Touch ID may not be configured",
+                okActionTitle: "Ok!")
+        }
+        
+        switch biometryType {
+        case .faceID: self.faceIdButton.setImage(UIImage(systemName: "faceid"), for: .normal)
+        case .touchID: self.faceIdButton.setImage(UIImage(systemName: "touchid"), for: .normal)
+        case .none: self.faceIdButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        }
+    }
+    
+    
+    func alert(
+        title: String,
+        message: String,
+        okActionTitle: String
+    ) {
+        let alertView = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(
+            title: okActionTitle,
+            style: .default
+        )
+        alertView.addAction(okAction)
+        present(
+            alertView,
+            animated: true
+        )
     }
     
     func addingConstraints () {
@@ -200,6 +263,12 @@ class LoginViewController: UIViewController {
             
             activityIndicator.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
             activityIndicator.rightAnchor.constraint(equalTo: passwordTextField.rightAnchor, constant: -16),
+            
+            faceIdButton.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: 16),
+            faceIdButton.heightAnchor.constraint(equalToConstant: 50),
+            faceIdButton.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
+            faceIdButton.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16),
+            
         ])
     }
 }

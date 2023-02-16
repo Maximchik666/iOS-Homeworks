@@ -24,9 +24,9 @@ class FeedViewController: UIViewController {
         return stack
     }()
     
-    private lazy var upperButton = CustomButton(backgroundColor: .brown, title: "Create a New Post")
-    private lazy var bottomButton = CustomButton(backgroundColor: .brown, title: "ComingSoon")
-    private lazy var checkGuessButton = CustomButton(title: "Guess!")
+    private lazy var upperButton = CustomButton(backgroundColor: .brown, title: String(localized: "CreateNewPost"))
+    private lazy var bottomButton = CustomButton(backgroundColor: .brown, title: String(localized:"ComingSoon"))
+    private lazy var checkGuessButton = CustomButton(title:  String(localized: "Guess"))
    
     private lazy var gameTextField: UITextField = {
         let textField = UITextField()
@@ -68,7 +68,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         
 #if DEBUG
-        view.backgroundColor = .systemGray
+        view.backgroundColor = UIColor.createColor(lightMode: .systemGray, darkMode: .systemGray2)
 #else
         view.backgroundColor = .blue
 #endif
@@ -97,14 +97,14 @@ class FeedViewController: UIViewController {
     
     func navBarCustomization () {
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(named: "LightGray")
+        appearance.backgroundColor = UIColor.createColor(lightMode: .white, darkMode: .systemGray5)
         appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")!]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "VKColor")!]
         navigationController?.navigationBar.tintColor = UIColor(named: "VKColor")
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        self.navigationItem.title = "Your Feed"
+        self.navigationItem.title = String(localized: "YourFeed")
     }
     
     

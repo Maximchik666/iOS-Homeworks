@@ -27,8 +27,8 @@ class MainTabBarController: UITabBarController {
         savedPosts.start()
         map.start()
         
-        UITabBar.appearance().backgroundColor = .systemBackground
+        UITabBar.appearance().backgroundColor = UIColor.createColor(lightMode: .systemBackground, darkMode: .systemGray5)
         UITabBar.appearance().tintColor = UIColor(named: "VKColour")
-        viewControllers = [feed.navigationController, file.navigationController, media.navigationController, map.navigationController, profile.navigationController, savedPosts.navigationController]
+        viewControllers = [feed.navigationController, media.navigationController, profile.navigationController, savedPosts.navigationController, file.navigationController, map.navigationController]
     }
 }

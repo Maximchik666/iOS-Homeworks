@@ -1,0 +1,41 @@
+"TabBarMap" = "Map";
+"TabBarProfile" = "Profile";
+"TabBarSaved" = "Saved";
+"TabBarMedia" = "Media";
+"TabBarFeed" = "Feed";
+"TabBarFiles" = "Files";
+
+"ProfileNameDebug" = "Vasiliy Tyorkin";
+"ProfileNameRelease" = "Admin Adminov";
+"StatusDebug" = "Kickin'";
+"StatusRelease" = "Strugglin'";
+
+"postDtfText" = "Elon Musk, in a series of short tweets, criticized Rings of Power, writing that Tolkien is rolling over in his grave. The billionaire called almost all male characters cowards and jerks, and Galadriel, in his opinion, is the only interesting character in the series.";
+"postKinopoiskText" = "Released on Netflix in 2021, Arcane became the first streaming project to win an Emmy in the Best Animated Program category at the Creative Arts Emmy Awards. Bob's Diner and the Marvel animated series What if..?. The latter was not left without awards: Chadwick Boseman posthumously received the Emmy for the best voice-over of the character, who gave his voice to T'Challa. The award is awarded for technical achievements on American television. The main Emmy Awards will take place on September 13.";
+"postKronenbergText" = "Horror of the day: what one of the animatronic alien dolls from the famous Steven Spielberg movie looks like now. Alien is 40 years old this year.";
+"postDtfName" = "DTF";
+"postKinopoiskName" = "Kinopoisk";
+"postKronenbergName" = "Kronenberg Unfiltered";
+
+"EnterEmail" = "Please Enter Your Email";
+"EnterPassword" = "Enter Password";
+"CreateUser" = "Create A User";
+"Search" = "Search";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"ReEnterPassword" = "Re-Enter Password";
+"CreatePassword" = "Create Password";
+"CreateFolder" = "Create Folder";
+"ChangePassword" = "Change Password";
+"SortItems" = "Sort Items";
+"YourMedia" = "Your Media";
+"Likes" = "Likes";
+"Views" = "Views";
+"YourFeed" = "Your Feed";
+"CreateNewPost" = "Create a New Post";
+"ComingSoon" = "Coming Soon";
+"Guess" = "Guess!";
+"EnterTextHere" = "Enter text here";
+"PutSomeWordsInItFirst" = "Put Some Words In It First!";
+"Photos" = "Photos";
+"ShowStatus" = "Show Status";
