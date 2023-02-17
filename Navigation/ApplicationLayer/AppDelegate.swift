@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var appConfiguration: AppConfiguration?
     var appCoordinator: AppCoordinator?
+    var localNotificationService = LocalNotificationsService()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -43,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
       //  CoreDataManager.defaultManager.reloadPosts()
       //  CoreDataManager.defaultManager.deleteAllPosts()
+        
+        localNotificationService.registerForLatestUpdatesIfPossible()
         
         return true
     }
