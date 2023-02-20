@@ -192,7 +192,7 @@ class LoginViewController: UIViewController {
     
     func evaluateAutorization() {
         
-        var biometryType = authorizationService.biometryTipeClarification()
+        let biometryType = authorizationService.biometryTipeClarification()
         
         if biometryType == .none{
             self.alert(
@@ -205,6 +205,7 @@ class LoginViewController: UIViewController {
         case .faceID: self.faceIdButton.setImage(UIImage(systemName: "faceid"), for: .normal)
         case .touchID: self.faceIdButton.setImage(UIImage(systemName: "touchid"), for: .normal)
         case .none: self.faceIdButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        @unknown default: print("Something Went Wrong(((")
         }
     }
     

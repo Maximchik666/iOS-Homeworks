@@ -60,6 +60,7 @@
 		99E8363628AA26110021FAF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E8363428AA26110021FAF0 /* LaunchScreen.storyboard */; };
 		99E8364028AA26BD0021FAF0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */; };
 		99EAB894298D7547004599F1 /* ColorSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAB893298D7547004599F1 /* ColorSwitcher.swift */; };
+		99F5E7E4299FB66A00B26D4B /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F5E7E3299FB66A00B26D4B /* LocalNotificationsService.swift */; };
 		99FB0AD8292BBB430046534C /* AppErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0AD7292BBB430046534C /* AppErrors.swift */; };
 		99FB0ADB292CEED80046534C /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADA292CEED80046534C /* MediaViewController.swift */; };
 		99FB0ADD292CF0B10046534C /* MediaTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FB0ADC292CF0B10046534C /* MediaTabCoordinator.swift */; };
@@ -153,6 +154,7 @@
 		99E8363728AA26110021FAF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99E8363F28AA26BD0021FAF0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		99EAB893298D7547004599F1 /* ColorSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwitcher.swift; sourceTree = "<group>"; };
+		99F5E7E3299FB66A00B26D4B /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		99F97FF7299BB172005FC68E /* NavigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NavigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FB0AD7292BBB430046534C /* AppErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrors.swift; sourceTree = "<group>"; };
 		99FB0ADA292CEED80046534C /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				99FB0AED292E3B6F0046534C /* AppConfiguration.swift */,
 				997071A729464CC300920BBB /* RealmManager.swift */,
 				9973B692299D418C00422ED2 /* LocalAuthorizationService.swift */,
+				99F5E7E3299FB66A00B26D4B /* LocalNotificationsService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				99DE41DC297C4E8000DAF428 /* MapTabCoordinator.swift in Sources */,
 				990F39B428CA18B80037D08A /* PhotosViewController.swift in Sources */,
 				99DEC62A28C61F5200A0CE64 /* PostTableViewCell.swift in Sources */,
+				99F5E7E4299FB66A00B26D4B /* LocalNotificationsService.swift in Sources */,
 				99E8362E28AA26100021FAF0 /* ProfileViewController.swift in Sources */,
 				99FB0AEC292E3B120046534C /* NetworkService.swift in Sources */,
 				997710C0290D6D79000D84E9 /* Coordinator.swift in Sources */,
