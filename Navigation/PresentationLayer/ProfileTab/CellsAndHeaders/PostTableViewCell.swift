@@ -93,7 +93,7 @@ class PostTableViewCell: UITableViewCell {
     
     @objc func savePost () {
         if let unwrappedPost = post {
-            CoreDataManager.defaultManager.addPost(author: unwrappedPost.author, likes: Int64(unwrappedPost.likes), views: Int64(unwrappedPost.views), descr: unwrappedPost.description, image: unwrappedPost.image, id: Int64(unwrappedPost.id))
+          //  CoreDataManager.defaultManager.addPost(author: unwrappedPost.author, likes: Int64(unwrappedPost.likes), views: Int64(unwrappedPost.views), descr: unwrappedPost.description, image: unwrappedPost.image, id: Int64(unwrappedPost.id))
         } else {
             print("Post Is Already Saved")
         }
@@ -128,7 +128,7 @@ class PostTableViewCell: UITableViewCell {
     
     func setupPost(post: Post) {
         postLabel.text = post.author
-        postImage.image = UIImage(named: post.image)
+        postImage.image = post.image
         postText.text = post.description
         postLikesLabel.text = String(localized: "Likes") + " " + "\(post.likes)"
         postViewsLabel.text = String(localized: "Views") + " " + "\(post.views)"

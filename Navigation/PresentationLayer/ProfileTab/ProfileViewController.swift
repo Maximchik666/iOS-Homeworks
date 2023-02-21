@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     var user: User?
     weak var coordinator: ProfileTabCoordinator?
     
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +24,9 @@ class ProfileViewController: UIViewController {
         tableView.register(ProfileTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "CustomCell")
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosCell")
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
         return tableView
     }()
     
@@ -59,7 +63,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         navigationController?.navigationBar.isHidden = true
         
         addingSubViewsAndConstraints()
@@ -101,7 +105,7 @@ class ProfileViewController: UIViewController {
             
         ])
     }
- 
+    
     // Observer for tapping on Small Profile Image
     private func addObserver() {
         NotificationCenter.default.addObserver(self,
@@ -159,7 +163,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 0 {
             return 1
         } else {
-            return 3
+            return viewModel.count
         }
     }
     
@@ -191,6 +195,76 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 0 {
             self.coordinator?.openPhotosViewController()
+        }
+    }
+}
+
+extension ProfileViewController: UITableViewDragDelegate, UITableViewDropDelegate {
+    
+    // Drag
+    
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        
+        let description = viewModel[indexPath.row].description
+        let image = viewModel[indexPath.row].image
+        
+        let dragItemDescription = NSItemProvider(object: NSString(string: description))
+        let dragItemImage = NSItemProvider(object: image ?? UIImage())
+        
+        let dragItem1 = UIDragItem(itemProvider: dragItemDescription)
+        let dragItem2 = UIDragItem(itemProvider: dragItemImage)
+        
+        return [dragItem2, dragItem1]
+        
+    }
+    
+    //Drop
+    
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        let img = session.canLoadObjects(ofClass: UIImage.self)
+        let str = session.canLoadObjects(ofClass: String.self)
+        
+        return img || str
+    }
+    
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        var dropProposal = UITableViewDropProposal(operation: .cancel)
+        
+        guard session.items.count == 2 else { return dropProposal }
+        
+        dropProposal = UITableViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
+        
+        return dropProposal
+    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        var destinationIndexPaths: [IndexPath] = []
+        var newPost = tempPost
+        
+        let section = tableView.numberOfSections - 1
+        let row = tableView.numberOfRows(inSection: section)
+        destinationIndexPaths.append(IndexPath(row: row, section: section))
+        
+        for item in coordinator.items {
+            
+            item.dragItem.itemProvider.loadObject(ofClass: String.self, completionHandler: { string, error in
+                if let desc = string {
+                    newPost.description = desc
+                }
+            })
+            
+            item.dragItem.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { image, error in
+                
+                if let img = image {
+                    newPost.image = img as? UIImage
+                    
+                }
+            })
+        }
+        
+        DispatchQueue.main.async {
+            viewModel.append(newPost)
+            tableView.insertRows(at: destinationIndexPaths, with: .automatic)
         }
     }
 }
